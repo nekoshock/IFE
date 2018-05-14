@@ -1,0 +1,145 @@
+* {
+    margin: 0px;
+    font-family: Montserrat-ExtraLight, Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: rgb(50, 50, 50);
+}
+
+.page {
+    width: 1600px;
+    margin: 0px auto;
+    position: relative;
+}
+
+.header {
+    height: 1000px;
+    background-image: url(img/Header.png);
+    text-align: center;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    font-size: 62px;
+    line-height: 72px;
+    position: absolute;
+    top: 210px;
+    width: 1600px;
+}
+
+.header>p {
+    font-size: 16px;
+    line-height: 32px;
+    color: rgb(255, 255, 255);
+    width: 770px;
+    opacity: 0.7;
+    position: absolute;
+    top: 345px;
+    left: 415px;
+}
+
+.header form {
+    position: absolute;
+    box-sizing: border-box;
+    top: 530px;
+    left: 315px;
+    text-align: center;
+    height: 250px;
+    width: 970px;
+    border: 1px solid #808080;
+    border-radius: 2px;
+}
+
+.header h2 {
+    position: absolute;
+    left: 370px;
+    top: 62px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    opacity: 0.9;
+}
+
+.header form p {
+    position: absolute;
+    top: 93px;
+    left: 410px;
+    color: #fff;
+    opacity: 0.3;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 12px;
+}
+
+.header [type=submit] {
+    box-sizing: border-box;
+    position: absolute;
+    top: 148px;
+    left: 744px;
+    width: 125px;
+    height: 50px;
+    border-radius: 5px;
+    font-family: Montserrat-light, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: #fff;
+    letter-spacing: 1px;
+    border: none;
+}
+
+#username,
+#password {
+    box-sizing: border-box;
+    position: absolute;
+    top: 148px;
+    width: 290px;
+    height: 48px;
+    border: 1px solid #808080;
+    padding-left: 20px;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 2px;
+}
+
+#username {
+    left: 100px;
+}
+
+#password {
+    left: 422px;
+}
+.section {
+    background-color: #fff;
+    height: 710px;
+}
+h5 {
+    font-size: 14px;
+    text-align: center;
+    padding-top: 90px;
+    text-transform: uppercase;
+}
+.section h2{
+    margin-top:40px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size: 38.5px;
+    line-height:52px;
+    text-align: center;
+    width: 760px;
+}
+.section {
+    background: #fff;
+}
+
+.one .article{
+    background-image: url(img/Features.png);
+    background-repeat: no-repeat;
+    margin-left:277px;
+    margin-top: 85px;
+    width:1030px;
+    height: 275px;
+}
+.one h4{
+    
+}

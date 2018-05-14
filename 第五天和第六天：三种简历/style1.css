@@ -1,0 +1,13 @@
+html {
+    font-family: "微软雅黑";
+    font-weight: bold;
+}
+
+.page {
+    width: 1080px;
+    margin: 0px auto;
+}
+
+span {
+    margin-right: 3rem;
+}

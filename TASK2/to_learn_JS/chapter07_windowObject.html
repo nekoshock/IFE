@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS_chapter07</title>
+    <link rel="stylesheet" href="css01.css">
+</head>
+
+<body>
+    <div class='page'>
+        <h1>chapter07</h1>
+        <h2>JS基础语法 WINDOWS对象</h2>
+        <p>
+            window对象是BOM的核心，window对象指当前的浏览器窗口。操作方法指操作浏览器的方法.
+            <figure>
+                <img src="image/windowobject.jpg" alt="WINDOW对象操作">
+                <figcaption>WINDOW对象基础操作</figcaption>
+            </figure>
+        </p>
+        <br>
+        <div class="pp">
+            <h2>JavaScript 计时器</h2>
+            <figure>
+                <img src="image/time.jpg" alt="计时器操作">
+                <figcaption>计时器操作</figcaption>
+            </figure>
+            <div class="cp">
+                <h3>间隔重复执行setInterval()</h3>
+                <p>setInterval(代码,交互时间);
+                    <i>interval:间隔,区间;</i>
+                    <br>与其叫计时器,不如说是间隔重复执行.
+                </p>
+                <p>参数说明：
+                    <br>1. 代码：要调用的函数或要执行的代码串。
+                    <br>2. 交互时间：周期性执行或调用表达式之间的时间间隔，以毫秒计（1s=1000ms）。
+                    <br>返回值: 一个可以传递给 clearInterval() 从而取消对"代码"的周期性执行的值。
+                    <br>调用函数格式(假设有一个clock()函数): setInterval("clock()",1000)
+                    <i>尽量不要用</i> 或 setInterval(clock,1000)
+                    <i>推荐</i>
+                </p>
+                <p>做一个钟表:
+                    <input type="text" id="clock">
+                </p>
+            </div>
+            <div class="cp">
+                <h3>取消clearInterval()</h3>
+                <p>clearInterval(id_of_setInterval); </p>
+                <p>参数说明:
+                    <br>id_of_setInterval：由 setInterval() 返回的 ID 值。
+                </p>
+                <p>做一些按钮,操作上面的钟表.
+                    <input type="button" value="停" onclick="clearInterval(stop)">
+                    <input type="button" value="动" onclick="clockDoIt()">
+                </p>
+            </div>
+            <div class="cp">
+                <h3>延迟执行 setTimeout();</h3>
+                <p>setTimeout(代码,延迟时间);
+                    <i>timeout:暂停时间,超时;</i>在载入后延迟指定时间,然后去执行且仅执行一次。</p>
+                <p>参数说明：
+                    <br>1. 要调用的函数或要执行的代码串。
+                    <br>2. 延时时间：在执行代码前需等待的时间，以毫秒为单位（1s=1000ms)。</p>
+                <p>调用函数格式与setInterval()相同.</p>
+                <p>
+                    <input type="button" value="点击我,3秒钟后会打开百度!" onclick="settimeout()">
+                </p>
+            </div>
+            <div class="cp">
+                <h3>取消计时器 clearTimeout();</h3>
+                <p>clearTimeout(id_of_setTimeout); 用法与clearInterval()相似.</p>
+                <p>一个计时器:
+                    <input type="text" id="timeout">
+                    <input type="button" value="start" onclick="start()">
+                    <input type="button" value="stop" onclick="stop()">
+                </p>
+            </div>
+        </div>
+        <div class="pp">
+            <h2>History对象</h2>
+            <p>history对象记录了用户曾经浏览过的页面(URL)，并可以实现浏览器前进与后退相似导航的功能。</p>
+            <figure>
+                <img src="image/windowhistory1.jpg" alt="">
+                <figcaption>属性</figcaption>
+            </figure>
+            <figure>
+                <img src="image/windowhistory2.jpg" alt="">
+                <figcaption>方法</figcaption>
+            </figure>
+            <div class="cp">
+                <h3>返回上一页面</h3>
+                <p>window.history.back(); 这也相当于window.history.go(-1);</p>
+            </div>
+            <div class="cp">
+                <h3>前进至下一个页面</h3>
+                <p>window.history.forward(); 这也相当有window.history.go(1);</p>
+            </div>
+            <div class="cp">
+                <h3>返回历史记录中的特定页面</h3>
+                <p>window.history.go(相对位置);</p>
+                <figure>
+                    <img src="image/windowhistorynumber.jpg" alt="数字">
+                    <figcaption>位置参数</figcaption>
+                </figure>
+                <p>正数为几就是单击"前进按钮"几次,负数为几就是单击"后退按钮"几次.</p>
+            </div>
+        </div>
+        <div class="pp">
+            <h2>Location对象</h2>
+            <p>
+                <i>Location:定位;</i>用于获取或设置窗体的URL，并且可以用于解析URL。</p>
+            <figure>
+                <img src="image/windowlocation.jpg" alt="属性图示" style="max-width: 850px;">
+                <figcaption>location对象属性图示</figcaption>
+            </figure>
+            <figure>
+                <img src="image/windowlocation1.jpg" alt="属性">
+                <figcaption>location对象属性</figcaption>
+            </figure>
+            <figure>
+                <img src="image/windowlocation2.jpg" alt="属性">
+                <figcaption>location对象方法</figcaption>
+            </figure>
+        </div>
+        <div class="pp">
+            <h2>Navigator对象</h2>
+            <p>
+                <i>Navigator:领航员,航行者;</i>Navigator对象是用来获得浏览器名称,版本等信息的对象.</p>
+            <figure>
+                <img src="image/windownavigator.jpg" alt="简单属性">
+                <figcaption>Navigator对象常用属性</figcaption>
+            </figure>
+        </div>
+        <div class="pp">
+            <h2>screen对象</h2>
+            <p>window.screen.属性; </p>
+            <figure>
+                <img src="image/windowscreen.jpg" alt="屏幕对象">
+                <figcaption>screen对象属性</figcaption>
+            </figure>
+        </div>
+    </div>
+    <script src="JS/chapter07.js"></script>
+</body>
+
+</html>

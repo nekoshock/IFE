@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .clear {
+            clear: both;
+            float: left;
+        }
+
+        .page {
+            width: 960px;
+            margin: 10px auto;
+        }
+
+        #p4 .pull-right {
+            float: right;
+        }
+
+        #p4 .pull-left {
+            float: left;
+        }
+    </style>
+    <title>JS_chapter01</title>
+</head>
+
+<body>
+    <div class="page">
+        <h1>chapter01</h1>
+        <h3>JS的简单教程</h3>
+        <p>为啥呢,JS高级语言设计这本红宝书确实太高级了,是对于JS语言深入了解提升所用书.并不适合初学者,初学还是学方法和实现比较好吧.</p>
+        <hr>
+        <div id="p1">
+            <h3>JS脚本的引入</h3>
+            <p>在head中或body底部,使用成对script /script标签;或是外部 script src="" /sricontentt 链接进来.</p>
+            <hr>
+        </div>
+        <div id="p2">
+            <h3>注释方法</h3>
+            <p>//单行注释;/* */为多行注释.</p>
+            <p>说起来html的注释是方括号括起来的!-- -- ;CSS的注释仅有/* */这一种方法.</p>
+            <hr>
+        </div>
+        <div id="p3">
+            <h3>简单互动方法</h3>
+            <h4>document.write()</h4>
+            <p>将内容直接写在网页上的方法.
+                <button onclick="myFirstExample()">点我试试看!</button>
+            </p>
+            <h4>alert();</h4>
+            <p>
+                <i>alert:警告;</i>弹出警告框的方法.
+                <button onclick="alert1()">弹出一个警告框</button>
+            </p>
+            <h4>confirm</h4>
+            <p>
+                <i>confirm:确认;</i>弹出需要确认的警告框,返回确认(true)或取消(false)的方法.
+                <button onclick="confirm1()">提交你的性别! </button>
+                <br>这里顺道说一下等于号"="的用法,一个=是赋值,两个==是简单比较,三个===是先比较类型,在比较值.
+            </p>
+            <h4>prompt</h4>
+            <p>
+                <i>prompt:v.提示;n.提词;</i>弹出一个需要输入内容的警告框,返回所填内容.
+                <button onclick="prompt1()">输入今天的日期</button>
+            </p>
+            <h4>windows.open</h4>
+            <p>打开目标窗口,还可以设置打开窗口的属性. 写法:windows.open("url","_self/_blank/_top","属性1,属性2");
+                <br>
+                <button onclick="openNew()">W3C!</button>
+                <img src="image/windowsopen.jpg" alt="windows.open可调整的属性">
+            </p>
+            <h4>windows.close</h4>
+            <p>关闭目标窗口.写法为:目标窗口变量名.close();
+                <br>
+                <button onclick="close1()">关闭窗口</button>
+            </p>
+            <hr>
+            <h4>课后练习</h4>
+            <p>
+                <button onclick="openWindow()">练习</button>
+            </p>
+            <p>当比较
+                <b>变量==true</b>还不是很好比,类型不一样,环境不一样(严格模式等)比出来什么结果真说不准.</p>
+            <hr>
+        </div>
+        <div id="p4">
+            <h3>简单DOM操作</h3>
+            <h4>获取元素 document.getElementById("ID")</h4>
+            <p>通过ID获取元素,再赋值给变量,就能操纵元素了.</p>
+            <h4>获取或替换HTML元素的内容 Object.innerHTML</h4>
+            <p>Object是被提取出的元素变量名,Object(对象名).innerHTML(属性)=HTML内容(值)这种玩法.</p>
+            <p id="p4color" style="color:red">我现在是红的.
+            </p>
+            <button onclick="yellow()">点我变色</button>
+            <p>只要触发了修改事件,页面就会相应修改的!</p>
+            <h4>获取或替换目标元素的CSS样式 Object.style.属性="新值".</h4>
+            <p>属性就是width,heigth等等;值就是新值.</p>
+            <p>需要注意的是background-color这类CSS里有-的属性,到JS里就是backgroundColor了,将-去除,-后面的首字母大写.</p>
+            <h4>显示和隐藏 Object.style.display="none"</h4>
+            <p id="p4display">通过操作display属性来显示或隐藏某内容</p>
+            <button onclick="none()">点我消失</button>
+            <button onclick="block()">点我出现</button>
+            <br>
+            <h4>获取或替换元素的class类名 Object.className="classname";</h4>
+            <div>
+                <p class="pull-left" id="p4class">通过修改元素的class名,更换元素的class.</p>
+                <p>
+                    <button onclick="leftRight()" class="clear" style="display: inline-block;">点我变换</button>
+                </p>
+            </div>
+            <h1 class="clear" style="width:100%;text-align: center;">完成JavaScript入门篇</h1>
+        </div>
+    </div>
+    <script>
+        function myFirstExample() {
+            const a = "示例:";
+            const p = "<br>注意:当页面已经渲染完了,再用document.write()方法会覆盖整个页面.(JS里面还能写html的标签,真神奇>";
+            document.write(`${a}这就是写法${p}`);
+        }
+
+        function alert1() {
+            const a = "警告框用法";
+            alert(a);
+        }
+
+        function confirm1() {
+            const a = confirm("你的是男性吗?");
+            if (a === true) {
+                alert("你是男性!");
+            } else {
+                alert("你是女性!");
+            }
+        }
+
+        function prompt1() {
+            const a = prompt("输入今天的日期!");
+            alert(a);
+        }
+
+        function openNew() {
+            const a = window.open("http://www.w3school.com.cn", "_blank", "width=300,height=200,menubar=no,toolbar=no, status=no,scrollbars=yes");
+        }
+
+        function close1() {
+            const a = window.open("http://www.w3school.com.cn", "_blank", "width=300,height=200,menubar=no,toolbar=no, status=no,scrollbars=yes");
+            a.close();
+        }
+
+        function openWindow() {
+            const a = confirm("是否打开新窗口?");
+            if (a === true) {
+                const b = "http://www.imooc.com";
+                const c = prompt(`打开的新网站网址是?默认是:${b}`);
+                if (c != null) {
+                    window.open(`http://${c}`, "_blank", "width=300,height=300");
+                } else {
+                    window.open(b, "_blank", "width=100,height=200");
+                }
+            }
+        }
+
+        function yellow() {
+            const a = document.getElementById("p4color");
+            a.innerHTML = "现在我改了文字";
+            alert(`获取样式为:${a.style.color} 然后修改`);
+            a.style.color = "yellow";
+        }
+
+        function none() {
+            const a = document.getElementById("p4display");
+            a.style.display = "none";
+        }
+
+        function block() {
+            const a = document.getElementById("p4display");
+            a.style.display = "block";
+        }
+
+        function leftRight() {
+            const a = document.getElementById("p4class");
+            if (a.className === "pull-left") {
+                a.className = "pull-right";
+            } else {
+                a.className = "pull-left";
+            }
+        }
+    </script>
+</body>
+
+</html>

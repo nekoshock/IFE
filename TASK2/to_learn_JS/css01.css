@@ -1,0 +1,49 @@
+.page {
+    width: 960px;
+    margin: 10px auto;
+    position: relative;
+}
+
+.content {
+    border-top: 1px solid #000;
+    border-top-color: midnightblue;
+}
+
+.cp {
+    margin-top: 10px;
+    border-top: 1px solid #000;
+    border-top-color: midnightblue;
+    position: relative;
+}
+
+.pp {
+    box-sizing: border-box;
+    padding: 15px;
+    border: 4px;
+    border-style: groove;
+    margin: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 微软雅黑;
+}
+
+h3 {
+    position: relative;
+    left: 30px;
+}
+
+figure {
+    display: block;
+    width: min-content;
+    margin:40px auto;
+}
+
+figcaption {
+    text-align: center;
+}

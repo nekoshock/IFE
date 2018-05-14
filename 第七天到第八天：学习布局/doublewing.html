@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DoubleWing</title>
+    <style>
+        #page {
+            min-width: 800px;
+        }
+
+        .sub,
+        .extra,
+        .column {
+            float: left;
+        }
+
+        .column {
+            width: 100%;
+
+        }
+
+        .sub {
+            margin-left: -100%;
+            width: 190px;
+        }
+
+        .extra {
+            margin-left: -230px;
+            width: 230px;
+        }
+
+        /*圣杯解决方法
+        #bd{
+            padding:0 230px 0 190px;
+        }
+        .sub{
+            position: relative;
+            left:-190px;
+        }
+        .extra{
+            position: relative;
+            right:-230px;
+        }*/
+
+       /*双飞翼方案*/
+        .main {
+            margin: 0 230px 0 190px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page">
+        <div id="hd"></div>
+        <div id="bd">
+            <div class="column">
+                <div class="main">#mian</div>
+            </div>
+            <div class="sub">sub</div>
+            <div class="extra">extra</div>
+        </div>
+        <div id="ft"></div>
+    </div>
+</body>
+
+</html>

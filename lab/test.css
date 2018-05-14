@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    margin: auto;
+    height: 1080px;
+    width: 800px;
+    background-color: rgb(242, 242, 242);
+    position: relative;
+}
+
+.container {
+    margin: auto;
+    height: 1050px;
+    width: 780px;
+    background-color: white;
+}
+
+.head {
+    height: 180px;
+    width: 800px;
+    position: relative;
+    top: 10px;
+    left: -10px;
+    background-color: rgb(195, 216, 223);
+}
+
+.head-left {
+    position: absolute;
+    width: 250px;
+    height: 180px;
+    left: 50px;
+    background-color: rgb(155, 188, 201);
+}
+
+.head-left p {
+    display: inline-block;
+    color: white;
+}
+
+.head-left .name {
+    font-size: 54px;
+    font-weight: bold;
+    margin-left: 85px;
+    margin-top: 30px;
+}
+
+.head-left .job {
+    margin-left: 70px;
+    margin-top: 10px;
+}
+
+.head-right {
+    position: absolute;
+    width: 350px;
+    height: 180px;
+    right: 50px;
+    padding: 0 20px;
+}
+
+.head-right p {
+    display: block;
+    color: white;
+    margin-top: 15px;
+}
+
+.body {
+    height: 850px;
+    width: 710px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.box1 {
+    height: 180px;
+    width: 700px;
+}
+
+.box-head {
+    height: 30px;
+    width: 700px;
+}
+
+.box-head .box-left {
+    float: left;
+    height: 30px;
+}
+
+.box-head .box-left .logob {
+    height: 30px;
+    width: 80px;
+    background-color: rgb(155, 188, 201);
+    margin-left: -37px;
+    border-radius: 5%;
+}
+
+.box-head .box-left .logos {
+    border-top: 5px solid rgb(75, 129, 149);
+    border-right: 5px solid rgb(75, 129, 149);
+    border-left: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    height: 0px;
+    width: 0px;
+    margin-left: -35px;
+}
+
+.box-head span {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 10px;
+    color: rgb(155, 188, 201);
+    font-size: 18px;
+}
+
+.box-text {
+    font-size: 14px;
+}
+
+.box1-1 p {
+    margin-left: 50px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.box1-2 {
+    margin-top: 10px;
+    line-height: 1.5em;
+}
+
+.box2 {
+    height: 440px;
+    width: 700px;
+}
+
+.box2 p {
+    margin-left: 22px;
+    line-height: 2em;
+}
+
+#title {
+    font-weight: bold;
+}
+
+.box3 {
+    height: 80px;
+    width: 700px;
+}
+
+.box3 p {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.box4 {
+    height: 200px;
+    width: 700px;
+}
+
+.box4 ol {
+    margin-left: 30px;
+}

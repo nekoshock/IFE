@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #333333;
+        }
+
+        .logo {
+            width: 960px;
+            margin: 0 auto;
+            position: relative;
+            height: 80px;
+
+        }
+
+        .logo img {
+            padding-top: 20px;
+            display: block;
+            width: 80px;
+            height: 40px;
+        }
+
+        .addr {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+
+        }
+
+        .addr a {
+            color: #ffffff;
+        }
+
+        .addr>ul {
+            list-style-type: none;
+
+        }
+
+        .addr>ul li {
+            display: inline;
+        }
+
+        .banner {
+            height: 300px;
+            background-color: #66bb33;
+        }
+
+        .nav {
+            height: 70px;
+            border-bottom: 1px solid #DDD;
+            position: relative;
+        }
+
+        .nav-bar {
+            width: 960px;
+            margin: 0 auto;
+            display: flex;
+            height: 100%;
+            align-items: flex-end;
+        }
+
+        .nav-bar div {
+            background-color: #eee;
+            padding: 20px 30px;
+            border: 1px solid #ddd;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            top: 1px;
+
+        }
+
+        #tag1 {
+            border-bottom: 1px solid #fff;
+            background-color: #fff;
+        }
+
+        .section {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        .section>div {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .section>div div {
+            padding: 80px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            margin-right: 8px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .footer {
+            height: 120px;
+            background-color: #666;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        .footer p {
+            text-align: center;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="logo">
+                <div class="img">
+                    <img src="../TASK1/image/001.jpg" alt="">
+                </div>
+                <div class="addr">
+                    <ul>
+                        <li>
+                            <a href="#">Github</a>
+                        </li>
+                        <li>
+                            <a href="#">Register</a>
+                        </li>
+                        <li>
+                            <a href="#">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="banner"></div>
+        <div class="nav">
+            <div class="nav-bar">
+                <div id="tag1">HOME</div>
+                <div id="tag2">RROFILE</div>
+                <div id="tag3">ABOUT</div>
+            </div>
+        </div>
+        <div class="section">
+            <div>
+                <div>This is Content 1</div>
+                <div>MaybeContent 2</div>
+                <div>Content 3</div>
+            </div>
+            <div>
+                <div>Content 4</div>
+                <div>Content 5</div>
+                <div>Content 6</div>
+                <div>Content 7</div>
+            </div>
+            <div>
+                <div>Content 8</div>
+                <div>Content 9</div>
+                <div>Content 10</div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; 2018 ife.baidu.com</p>
+        </div>
+    </div>
+</body>
+
+</html>
