@@ -1,40 +1,45 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>控制div属性</title>
-<style>
-#outer{width:500px;margin:0 auto;padding:0;text-align:center;}
-#div1{width:100px;height:100px;background:black;margin:10px auto;display:block;}
-</style>
-<script>
-const changeStyle = function (elem, attr, value) {
-    elem.style[attr] = value;
-};
-window.onload = function () {
-    const oBtn = document.getElementsByTagName("input");
-    const oDiv = document.getElementById("div1");
-    const oAtt = ["width", "height", "background", "display", "display"];
-    const oVal = ["200px", "200px", "red", "none", "block"];
+<!DOCTYPE html>
+<html lang="en">
 
-    for (let i = 0; i < oBtn.length; i += 1) {
-        oBtn[i].index = i;
-        oBtn[i].onclick = function () {
-            this.index === oBtn.length - 1 && (oDiv.style.cssText = "");
-            changeStyle(oDiv, oAtt[this.index], oVal[this.index]);
-        };
-    }
-};
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .style1 {
+            margin: 10px auto;
+            display: block;
+            border: 1px solid white;
+            padding: 10px 25px;
+            font-size: 18px;
+        }
+
+        .style1:hover {
+            background-color: #66B3FF;
+            cursor: pointer;
+        }
+
+        .add{
+            color: White;
+            background-color: #9999FF;
+        }
+    </style>
 </head>
+
 <body>
-<div id="outer">
-<input type="button" value="变宽" />
-<input type="button" value="变高" />
-<input type="button" value="变色" />
-<input type="button" value="隐藏" />
-<input type="button" value="重置" />
-<div id="div1"></div>
-</div>　　
+    <div>
+        <input id="btnB" type="button" name="btnLogin" value="登录" class="style1" />
+        <div id="tool">
+            <input type="button" value="【obj.style.className】更改样式" onclick="changeBackgroundColor()" />
+        </div>
+    </div>
+    <script>
+        function changeBackgroundColor() {
+            const add = "add";
+            document.getElementById("btnB").className += ` ${add}`;
+        }
+    </script>
 </body>
+
 </html>
