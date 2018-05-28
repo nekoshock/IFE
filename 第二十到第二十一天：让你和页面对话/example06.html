@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example06</title>
+    <style>
+        div {
+            width: 480px;
+            height: 480px;
+            background-image: url(erik.jpg);
+            background-repeat: no-repeat;
+            background-position-y: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="A">A</button>
+    <div></div>
+    <script>
+        const btn = document.querySelector("#A");
+        const div = document.querySelector("div");
+        let intY = 0;
+
+        function move() {
+
+        }
+
+        function a() {
+            if (intY > -8100) {
+                intY -= 480;
+                div.style.backgroundPositionY = `${intY}px`;
+                const i = setTimeout(a, 200);
+            } else {
+                intY = 0;
+                div.style.backgroundPositionY = `${intY}px`;
+            }
+        }
+        btn.addEventListener("click", a);
+    </script>
+</body>
+
+</html>
