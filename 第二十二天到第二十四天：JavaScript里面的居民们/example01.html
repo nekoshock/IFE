@@ -65,12 +65,12 @@
         }
 
         function roundA() {
-            const rA = isNum(numA.value);
+            let rA = isNum(numA.value);
             const rB = isNum(numB.value);
             if (rA && rB) {
-                const arr = rA.split("");
-                const arr2 = arr.slice(0, arr.indexOf(".") + parseInt(rB, 10) + 1);
-                result.innerHTML = arr2.join("");
+                rA *= parseFloat(`1e${rB}`, 10);
+                rA = Math.round(rA) / parseFloat(`1e${rB}`, 10);
+                result.innerHTML = rA;
             }
         }
 
