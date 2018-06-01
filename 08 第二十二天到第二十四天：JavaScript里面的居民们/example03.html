@@ -10,19 +10,23 @@
 
 <body>
     <script>
-        /*
-                实现一个字符串头尾去除空格的函数
-                注意需要去除的空格，包括全角、半角空格
-                暂时不需要学习和使用正则表达式的方式
-                */
         function diyTrim(str) {
-            let result = "";
-            for (let i = 0; i < str.length; i += 1) {
-                if ()
+            const result = str.split("");
+            for (let i = 0; i < result.length; i += 1) {
+                if (result[i] === "　" || result[i] === " ") {
+                    result[i] = "";
+                } else {
+                    break;
+                }
             }
-            // do something
-
-            return result;
+            for (let i = result.length - 1; i >= 0; i -= 1) {
+                if (result[i] === "　" || result[i] === " ") {
+                    result[i] = "";
+                } else {
+                    break;
+                }
+            }
+            return result.join("");
         }
 
         // 测试用例
@@ -39,10 +43,13 @@
         去掉字符串str中，连续重复的地方
         */
         function removeRepetition(str) {
-            var result = "";
-
-            // do something
-
+            let result = str.split("");
+            for (let i = 0; i < result.length; i += 1) {
+                if (result[i] === result[i + 1]) {
+                    result[i] = "";
+                }
+            }
+            result = result.join("");
             return result;
         }
 
