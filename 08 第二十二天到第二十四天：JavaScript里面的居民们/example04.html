@@ -10,57 +10,57 @@
 
 <body>
     <script>
-        var tree = {
-            "id": 0,
-            "name": "root",
-            "left": {
-                "id": 1,
-                "name": "Simon",
-                "left": {
-                    "id": 3,
-                    "name": "Carl",
-                    "left": {
-                        "id": 7,
-                        "name": "Lee",
-                        "left": {
-                            "id": 11,
-                            "name": "Fate"
-                        }
+        const tree = {
+            id: 0,
+            name: "root",
+            left: {
+                id: 1,
+                name: "Simon",
+                left: {
+                    id: 3,
+                    name: "Carl",
+                    left: {
+                        id: 7,
+                        name: "Lee",
+                        left: {
+                            id: 11,
+                            name: "Fate",
+                        },
                     },
-                    "right": {
-                        "id": 8,
-                        "name": "Annie",
-                        "left": {
-                            "id": 12,
-                            "name": "Saber"
-                        }
-                    }
+                    right: {
+                        id: 8,
+                        name: "Annie",
+                        left: {
+                            id: 12,
+                            name: "Saber",
+                        },
+                    },
                 },
-                "right": {
-                    "id": 4,
-                    "name": "Tony",
-                    "left": {
-                        "id": 9,
-                        "name": "Candy"
-                    }
-                }
+                right: {
+                    id: 4,
+                    name: "Tony",
+                    left: {
+                        id: 9,
+                        name: "Candy",
+                    },
+                },
             },
-            "right": {
-                "id": 2,
-                "name": "right",
-                "left": {
-                    "id": 5,
-                    "name": "Carl",
+            right: {
+                id: 2,
+                name: "right",
+                left: {
+                    id: 5,
+                    name: "Carl",
                 },
-                "right": {
-                    "id": 6,
-                    "name": "Carl",
-                    "right": {
-                        "id": 10,
-                        "name": "Kai"
-                    }
-                }
-            }
+                right: {
+                    id: 6,
+                    name: "Carl",
+                    right: {
+                        id: 10,
+                        name: "Kai",
+                    },
+                },
+            },
         };
 
         // 假设id和name均不会重复，根据输入name找到对应的id
@@ -107,15 +107,15 @@
             arr[0] = tree;
             for (let i = 0; i < arr.length; i += 1) {
                 Name[i] = arr[i].name;
-                if (arr[i].left !== undefined) {
+                if (typeof (arr[i].left) !== "undefined") {
                     arr.push(arr[i].left);
                 }
-                if (arr[i].right !== undefined) {
+                if (typeof (arr[i].right) !== "undefined") {
                     stack.push(arr[i].right);
                 }
-                if (arr[i].left === undefined) {
+                if (typeof (arr[i].left) === "undefined") {
                     const a = stack.pop();
-                    if (a !== undefined) {
+                    if (typeof (a) !== "undefined") {
                         arr.push(a);
                     }
                 }
@@ -133,13 +133,13 @@
             let j;
             for (let i = 0; i < arr.length; i += 1) {
                 stack.push(arr[i]);
-                if (arr[i].left !== undefined) {
+                if (typeof (arr[i].left) !== "undefined") {
                     arr[i + 1] = arr[i].left;
                 } else {
                     while (stack.length > 0) {
                         j = stack.pop();
                         name.push(j.name);
-                        if (j.right !== undefined) {
+                        if (typeof (j.right) !== "undefined") {
                             arr[i + 1] = j.right;
                             break;
                         }
@@ -155,27 +155,31 @@
             const name = [];
             const stack = [];
             arr[0] = tree;
-            let j;
+            stack.push(arr[0]);
+            let j = 0;
             for (let i = 0; i < arr.length; i += 1) {
-                stack.push(arr[i]);
-                if (arr[i].left !== undefined) {
-                    arr[i + 1] = arr[i].left;
-                } else if (arr[i].right !== undefined) {
-                    arr[i + 1] = arr[i].right;
-                } else {
-                    j = stack.pop();
-                    name.push(j.name);
-                    while (stack.length > 0) {
-                        if (j.right !== undefined) {
-                            arr[i + 1] = j.right;
-                            break;
-                        }
+                if ((typeof (arr[i].left) !== "undefined" || typeof (arr[i].right) !== "undefined") && arr[i].co !== 1) {
+                    if (typeof (arr[i].right) !== "undefined") {
+                        stack.push(arr[i].right);
                     }
+                    if (typeof (arr[i].left) !== "undefined") {
+                        stack.push(arr[i].left);
+                    }
+                    arr[i].co = 1;
+                    if (typeof (stack[stack.length - 1]) !== "undefined") {
+                        arr[i + 1] = stack[stack.length - 1];
+                    }
+                } else {
+                    name[j] = stack.pop().name;
+                    if (typeof (stack[stack.length - 1]) !== "undefined") {
+                        arr[i + 1] = stack[stack.length - 1];
+                    }
+                    j += 1;
                 }
             }
             return name;
         }
-        console.log(getListWithLDR());
+        console.log(getListWithLRD());
     </script>
 </body>
 
