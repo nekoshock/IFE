@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>example05</title>
+    <title>example06</title>
 </head>
 
 <body>
@@ -26,17 +26,17 @@
         const cont = document.querySelector("#queue-cont");
 
         function inQueue() {
-            queue.unshift(input.value);
+            queue.push(input.value);
             cont.innerHTML = `队列内容：${queue.join("-&gt;")}`;
         }
 
         function outQueue() {
-            queue.pop();
+            queue.shift();
             cont.innerHTML = `队列内容: ${queue.join("-&gt;")}`;
         }
 
         function font() {
-            cont.innerHTML = queue[queue.length - 1];
+            cont.innerHTML = queue[0];
         }
 
         function empty() {
