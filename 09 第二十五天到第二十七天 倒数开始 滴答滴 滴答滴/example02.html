@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="year-select">
+
+    </select>
+
+    <select id="month-select">
+
+    </select>
+
+    <select id="day-select">
+
+    </select>
+
+    <select id="hour-select">
+
+    </select>
+
+    <select id="minite-select">
+
+    </select>
+
+    <select id="second-select">
+
+    </select>
+
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+    <button></button>
+    <button></button>
+    <script>
+        const ys = document.querySelector("#year-select");
+        const mons = document.querySelector("#month-select");
+        const ds = document.querySelector("#day-select");
+        const hs = document.querySelector("#hour-select");
+        const mins = document.querySelector("#minite-select");
+        const ss = document.querySelector("#second-select");
+        const result = document.querySelector("#result-wrapper");
+
+        function option(a, b, ob) {
+            for (let con = a; con < b + 1; con += 1) {
+                const a1 = document.createElement("option");
+                const b1 = document.createTextNode(con);
+                a1.value = con;
+                a1.appendChild(b1);
+                ob.appendChild(a1);
+            }
+        }
+
+        (function ssss() {
+            option(2000, 2032, ys);
+            option(1, 12, mons);
+            option(1, 31, ds);
+            option(0, 23, hs);
+            option(0, 59, mins);
+            option(0, 59, ss);
+        }());
+
+        function getOtherDate() {
+            const date = new Date(ys.value, mons.value - 1, ds.value, hs.value, mins.value, ss.value);
+            return date;
+        }
+
+        function getDate() {
+            const date = new Date();
+            return date;
+        }
+
+        function weekday() {
+            const dd = getOtherDate();
+            const d = dd.getDay();
+            const arr = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            return arr[d];
+        }
+
+        function change() {
+            const time = getOtherDate() - getDate();
+            const day = Math.floor(time / (1000 * 60 * 60 * 24));
+            const hour = Math.floor(time / (1000 * 60 * 60)) - (day * 24);
+            const min = Math.floor(time / (1000 * 60)) - (hour * 60) - (day * 24 * 60);
+            const sec = Math.floor(time / (1000)) - (min * 60) - (hour * 60 * 60) - (day * 24 * 60 * 60);
+            result.innerHTML =
+                `现在距离${ys.value}年${mons.value}月${ds.value}日${weekday()} ${hs.value}:${mins.value}:${ss.value} 还有${day}天${hour}小时${min}分${sec}秒`;
+        }
+        setInterval(change, 1000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p></p>
+    <p></p>
+    <script>
+        const p = document.querySelectorAll("p");
+
+        function day() {
+            const dd = new Date();
+            const d = dd.getDay();
+            const arr = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            return arr[d];
+        }
+
+        function year() {
+            const dd = new Date();
+            const y = dd.getFullYear();
+            return y;
+        }
+
+        function date() {
+            const da = new Date();
+            let d = da.getDate();
+            if (d < 10) {
+                d = `0${d}`;
+            }
+            return d;
+        }
+
+        function month() {
+            const dd = new Date();
+            let mon = dd.getMonth();
+            mon += 1;
+            if (mon < 10) {
+                mon = `0${mon}`;
+            }
+            return mon;
+        }
+
+        function hour() {
+            const dd = new Date();
+            let h = dd.getHours();
+            if (h < 10) {
+                h = `0${h}`;
+            }
+            return h;
+        }
+
+        function min() {
+            const dd = new Date();
+            let m = dd.getMinutes();
+            if (m < 10) {
+                m = `0${m}`;
+            }
+            return m;
+        }
+
+        function sec() {
+            const dd = new Date();
+            let s = dd.getSeconds();
+            if (s < 10) {
+                s = `0${s}`;
+            }
+            return s;
+        }
+
+        function clock1() {
+            p[0].innerHTML = `${year()}年${month()}月${date()}日 ${day()} ${hour()}:${min()}:${sec()}`;
+        }
+
+        function day1() {
+            const dd = new Date();
+            const d = dd.getDay();
+            const arr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            return arr[d];
+        }
+
+        function hour1() {
+            const dd = new Date();
+            let h = dd.getHours();
+            h %= 12;
+            if (h < 10) {
+                h = `0${h}`;
+            }
+            return h;
+        }
+
+        function ampm() {
+            const dd = new Date();
+            const h = dd.getHours();
+            if (h >= 12) {
+                return "PM";
+            }
+            return "AM";
+        }
+
+        function clock2() {
+            p[1].innerHTML = `${year()}-${month()}-${date()} ${day1()} ${hour1()}:${min()}:${sec()} ${ampm()}`;
+        }
+        setInterval(clock1, 1000);
+        setInterval(clock2, 1000);
+    </script>
+</body>
+
+</html>
