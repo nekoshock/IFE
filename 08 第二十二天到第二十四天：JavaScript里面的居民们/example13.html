@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example13</title>
+</head>
+
+<body>
+    <script>
+        const arr = [];
+        const scoreObject = {
+            Tony: {
+                Math: 95,
+                English: 79,
+                Music: 68,
+            },
+            Simon: {
+                Math: 100,
+                English: 95,
+                Music: 98,
+            },
+            Annie: {
+                Math: 54,
+                English: 65,
+                Music: 88,
+            },
+        };
+        let i;
+        let j;
+        let k = 0;
+        for (i in scoreObject) {
+            const o = [];
+            o.push(i);
+            for (j in scoreObject[i]) {
+                o.push(scoreObject[i][j]);
+            }
+            arr[k] = o;
+            k += 1;
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>
