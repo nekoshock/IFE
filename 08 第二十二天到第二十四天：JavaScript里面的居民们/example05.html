@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>example05</title>
 </head>
 
 <body>
@@ -18,6 +18,38 @@
 
     <script>
         const queue = ["apple", "pear"];
+        const inBtn = document.querySelector("#in-btn");
+        const outBtn = document.querySelector("#out-btn");
+        const fontBtn = document.querySelector("#font-btn");
+        const emptyBtn = document.querySelector("#empty-btn");
+        const input = document.querySelector("#queue-input");
+        const cont = document.querySelector("#queue-cont");
+
+        function inQueue() {
+            queue.push(input.value);
+            cont.innerHTML = queue.join("-&gt;");
+        }
+
+        function outQueue() {
+            queue.shift();
+            cont.innerHTML = queue.join("-&gt;");
+        }
+
+        function font() {
+            cont.innerHTML = queue[queue.length - 1];
+        }
+
+        function empty() {
+            if (queue.length === 0) {
+                cont.innerHTML = "空";
+            } else {
+                cont.innerHTML = "非空";
+            }
+        }
+        inBtn.addEventListener("click", inQueue);
+        outBtn.addEventListener("click", outQueue);
+        fontBtn.addEventListener("click", font);
+        emptyBtn.addEventListener("click", empty);
     </script>
 </body>
 
