@@ -20,6 +20,43 @@
             [7, "Area1-2-3", 4],
             [8, "Area2-2-1", 6],
         ];
+        const menu = {};
+
+        function find(i, ob) {
+            const arr = [];
+            arr[0] = ob;
+            let x;
+            for (let j = 0; j < arr.length; j += 1) {
+                for (x in arr[j]) {
+                    if (x !== i.toString()) {
+                        if (typeof (arr[j][x]) === "object") {
+                            arr.push(arr[j][x]);
+                        }
+                    } else {
+                        return arr[j][x];
+                    }
+                }
+            }
+            return undefined;
+        }
+        for (let i = 0; i < menuArr.length; i += 1) {
+            if (menuArr[i][2] < 0) {
+                menu[menuArr[i][0].toString()] = {
+                    name: menuArr[i][1],
+                };
+            } else {
+                const j = find(menuArr[i][2], menu);
+                if (typeof (j) !== "undefined") {
+                    if (typeof (j.subMenu) === "undefined") {
+                        j.subMenu = {};
+                    }
+                    j.subMenu[menuArr[i][0]] = {
+                        name: menuArr[i][1],
+                    };
+                }
+            }
+        }
+        console.log(menu);
     </script>
 </body>
 
