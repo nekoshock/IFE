@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example11</title>
+</head>
+
+<body>
+    <script>
+        const arr = [
+            [10, 14],
+            [16, 60],
+            [7, 44],
+            [26, 35],
+            [22, 63],
+        ];
+
+        function decreasing(a, b) {
+            if (a[1] <= b[1]) {
+                return 1;
+            }
+            return -1;
+        }
+        console.log(arr.sort(decreasing));
+    </script>
+</body>
+
+</html>
