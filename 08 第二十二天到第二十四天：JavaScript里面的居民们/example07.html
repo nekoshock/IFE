@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example07</title>
+</head>
+
+<body>
+    <input id="stack-input" type="text">
+    <p id="stack-cont">栈内容：apple-&gt;pear</p>
+    <button id="push-btn">进栈</button>
+    <button id="pop-btn">退栈</button>
+    <button id="font-btn">打印栈顶元素内容</button>
+    <button id="empty-btn">判断栈是否为空</button>
+
+    <script>
+        const stack = ["apple", "pear"];
+        const btn = document.querySelectorAll("button");
+        const input = document.querySelector("#stack-input");
+        const p = document.querySelector("#stack-cont");
+
+        function push() {
+            stack.push(input.value);
+            p.innerHTML = `栈内容：${stack.join("-&gt;")}`;
+        }
+
+        function pop() {
+            stack.pop();
+            p.innerHTML = `栈内容：${stack.join("-&gt;")}`;
+        }
+
+        function cont() {
+            p.innerHTML = stack[stack.length - 1];
+        }
+
+        function empty() {
+            if (stack.length === 0) {
+                p.innerHTML = "空";
+            } else {
+                p.innerHTML = "非空";
+            }
+        }
+        btn[0].addEventListener("click", push);
+        btn[1].addEventListener("click", pop);
+        btn[2].addEventListener("click", cont);
+        btn[3].addEventListener("click", empty);
+    </script>
+</body>
+
+</html>
