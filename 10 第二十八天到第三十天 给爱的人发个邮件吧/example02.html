@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>example01</title>
+    <style>
+        #email-sug-wrapper li:hover {
+            background-color: pink;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,13 +37,13 @@
             let input1 = getInputValue();
             let input2;
             if (input1.indexOf("@") > 0) {
-                input1 = input1.slice(0, input1.indexOf("@"));
                 input2 = input1.slice(input1.indexOf("@") + 1);
+                input1 = input1.slice(0, input1.indexOf("@"));
             }
             const arr = [];
             for (let i = 0; i < postfixList.length; i += 1) {
                 if (postfixList[i].indexOf(input2) > -1) {
-                    arr[i] = `${input1}@${postfixList[i]}`;
+                    arr.push(`${input1}@${postfixList[i]}`);
                 }
             }
             if (arr.length === 0) {
@@ -81,6 +86,12 @@
             controlSug();
             addSug();
         };
+
+        function select(e) {
+            input.value = e.target.innerHTML;
+            hiddenSug();
+        }
+        ul.addEventListener("click", select);
     </script>
 </body>
 
