@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>example02</title>
+    <title>example03</title>
     <style>
         #email-sug-wrapper li:hover {
             background-color: pink;
@@ -56,14 +56,17 @@
 
         function addSug() {
             const sug = makesug();
-            while (ul.childNodes.length > 0) {
-                ul.removeChild(ul.childNodes[0]);
+            while (ul.children.length > 0) {
+                ul.removeChild(ul.children[0]);
             }
             for (let i = 0; i < sug.length; i += 1) {
                 const li = document.createElement("li");
                 const text = document.createTextNode(sug[i]);
                 li.appendChild(text);
                 ul.appendChild(li);
+            }
+            if (ul.children.length > 0) {
+                ul.children[0].style.backgroundColor = "#F00078";
             }
         }
 
@@ -91,7 +94,46 @@
             input.value = e.target.innerHTML;
             hiddenSug();
         }
+
+        function choose(e) {
+            if (e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 13) {
+                const li = document.querySelector("ul [style]");
+                li.style.cssText = "";
+                const arr = [];
+                for (let i = 0; i < li.parentElement.children.length; i += 1) {
+                    arr[i] = li.parentElement.children[i];
+                }
+                if (e.keyCode === 38) {
+                    // 上
+                    if (arr[0] === li) {
+                        arr[arr.length - 1].style.backgroundColor =
+                            "#F00078";
+                    } else {
+                        arr[arr.indexOf(li) - 1].style.backgroundColor =
+                            "#F00078";
+                    }
+                }
+                if (e.keyCode === 40) {
+                    // 下
+                    if (arr[arr.length - 1] === li) {
+                        arr[0].style.backgroundColor =
+                            "#F00078";
+                    } else {
+                        arr[arr.indexOf(li) + 1].style.backgroundColor =
+                            "#F00078";
+                    }
+                }
+                if (e.keyCode === 13) {
+                    // enter
+                    input.value = li.innerHTML;
+                    hiddenSug();
+                }
+            }
+        }
+
+
         ul.addEventListener("click", select);
+        input.addEventListener("keydown", choose);
     </script>
 </body>
 
