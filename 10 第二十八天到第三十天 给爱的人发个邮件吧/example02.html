@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example01</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+
+    <script>
+        const postfixList = ["163.com", "gmail.com", "126.com", "qq.com", "263.net"];
+        const input = document.querySelector("#email-input");
+        const ul = document.querySelector("#email-sug-wrapper");
+
+        function getInputValue() {
+            let vl = input.value;
+            while (vl.indexOf(" ") > 0 || vl.indexOf("　") > 0) {
+                vl = vl.replace(" ", "");
+                vl = vl.replace("　", "");
+            }
+            return vl;
+        }
+
+        function makesug() {
+            let input1 = getInputValue();
+            let input2;
+            if (input1.indexOf("@") > 0) {
+                input1 = input1.slice(0, input1.indexOf("@"));
+                input2 = input1.slice(input1.indexOf("@") + 1);
+            }
+            const arr = [];
+            for (let i = 0; i < postfixList.length; i += 1) {
+                if (postfixList[i].indexOf(input2) > -1) {
+                    arr[i] = `${input1}@${postfixList[i]}`;
+                }
+            }
+            if (arr.length === 0) {
+                for (let i = 0; i < postfixList.length; i += 1) {
+                    arr[i] = `${input1}@${postfixList[i]}`;
+                }
+            }
+            return arr;
+        }
+
+        function addSug() {
+            const sug = makesug();
+            while (ul.childNodes.length > 0) {
+                ul.removeChild(ul.childNodes[0]);
+            }
+            for (let i = 0; i < sug.length; i += 1) {
+                const li = document.createElement("li");
+                const text = document.createTextNode(sug[i]);
+                li.appendChild(text);
+                ul.appendChild(li);
+            }
+        }
+
+        function hiddenSug() {
+            ul.style.display = "none";
+        }
+
+        function showSug() {
+            ul.style.display = "block";
+        }
+
+        function controlSug() {
+            if (input.value === "") {
+                hiddenSug();
+            } else {
+                showSug();
+            }
+        }
+        input.oninput = function () {
+            controlSug();
+            addSug();
+        };
+    </script>
+</body>
+
+</html>
