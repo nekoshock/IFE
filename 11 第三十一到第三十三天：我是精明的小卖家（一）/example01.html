@@ -53,10 +53,9 @@
             }
             tableWrapper.appendChild(table);
         }
-        rs.onchange = function () {
+        rs.onchange = function onchange() {
             // 根据select选项获取数据
             while (tableWrapper.children.length) {
-                console.log(tableWrapper.children);
                 tableWrapper.removeChild(tableWrapper.children[0]);
             }
             renderTable(getData());
