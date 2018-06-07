@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="ife31data.js"></script>
+</head>
+
+<body>
+    <select id="region-select"></select>
+    <div id="table-wrapper">
+
+    </div>
+
+    <script>
+        const rs = document.querySelector("#region-select");
+        function getData() {
+            return rs.value;
+        }
+        function renderTable(data) {
+            const table = document.createElement("table");
+            table.appendChild(document.createElement("thead"));
+            table.thead.appendChild(document.createElement("tr"));
+            for (let i = 0; i < sourceData.length; i += 1) {
+                const th = document.createElement("th");
+                th.appendChild(document.createTextNode(sourceData[i]));
+                table.thead.tr.appendChild(th);
+            }
+            for (let i = 0; i < sourceData.length; i += 1) {
+                table.thead.appendChild(document.createElement("tr"));
+                for (let j = 0; j < sourceData[i].length; j += 1) {
+                    const td = document.createElement("td");
+                    td.appendChild(document.createTextNode(sourceData[i][j]));
+                    table.thead.tr.appendChild(td);
+                }
+            }
+            document.querySelector("#table-wrapper").appendChild(table);
+        }
+        rs.onchange = function () {
+            // 根据select选项获取数据
+            renderTable(getData());
+        };
+    </script>
+</body>
+
+</html>
