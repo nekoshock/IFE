@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example04</title>
+    <style>
+        #email-sug-wrapper li:hover {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+
+    <script>
+        const postfixList = ["163.com", "gmail.com", "126.com", "qq.com", "263.net"];
+        const input = document.querySelector("#email-input");
+        const ul = document.querySelector("#email-sug-wrapper");
+        let nowSelectTipIndex = 0;
+
+        function getInputValue() {
+            let vl = input.value;
+            while (vl.indexOf(" ") > 0 || vl.indexOf("　") > 0) {
+                vl = vl.replace(" ", "");
+                vl = vl.replace("　", "");
+            }
+            return vl;
+        }
+
+        function makesug() {
+            let input1 = getInputValue();
+            let input2;
+            if (input1.indexOf("@") > 0) {
+                input2 = input1.slice(input1.indexOf("@") + 1);
+                input1 = input1.slice(0, input1.indexOf("@"));
+            }
+            const arr = [];
+            for (let i = 0; i < postfixList.length; i += 1) {
+                if (postfixList[i].indexOf(input2) > -1) {
+                    arr.push(`${input1}@${postfixList[i]}`);
+                }
+            }
+            if (arr.length === 0) {
+                for (let i = 0; i < postfixList.length; i += 1) {
+                    arr[i] = `${input1}@${postfixList[i]}`;
+                }
+            }
+            return arr;
+        }
+
+        function hiddenSug() {
+            ul.style.display = "none";
+        }
+
+        function showSug() {
+            ul.style.display = "block";
+        }
+
+        function controlSug() {
+            if (input.value === "") {
+                hiddenSug();
+            } else {
+                showSug();
+            }
+        }
+
+
+        function select(e) {
+            input.value = e.target.innerHTML;
+            hiddenSug();
+        }
+
+        function reset() {
+            nowSelectTipIndex = 0;
+        }
+
+        function choose(e) {
+
+        }
+
+        function addSug(e) {
+            const sug = makesug();
+            while (ul.children.length > 0) {
+                ul.removeChild(ul.children[0]);
+            }
+            for (let i = 0; i < sug.length; i += 1) {
+                const li = document.createElement("li");
+                const text = document.createTextNode(sug[i]);
+                li.appendChild(text);
+                ul.appendChild(li);
+            }
+            if ((e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 13) && (input.value !== "")) {
+                if (e.keyCode === 38) {
+                    // 上
+                    if (nowSelectTipIndex === 0) {
+                        nowSelectTipIndex = ul.children.length - 1;
+                    } else {
+                        nowSelectTipIndex -= 1;
+                    }
+                }
+                if (e.keyCode === 40) {
+                    // 下
+                    if (nowSelectTipIndex === ul.children.length - 1) {
+                        nowSelectTipIndex = 0;
+                    } else {
+                        nowSelectTipIndex += 1;
+                    }
+                }
+                if (e.keyCode === 13) {
+                    // enter
+                    const li = ul.children[nowSelectTipIndex];
+                    input.value = li.innerHTML;
+                    hiddenSug();
+                }
+            } else {
+                reset();
+            }
+            if (ul.children.length > 0) {
+                ul.children[nowSelectTipIndex].style.backgroundColor = "#F00078";
+            }
+        }
+        input.onkeyup = function hah(e) {
+            controlSug();
+            addSug(e);
+        };
+        ul.addEventListener("click", select);
+    </script>
+</body>
+
+</html>
