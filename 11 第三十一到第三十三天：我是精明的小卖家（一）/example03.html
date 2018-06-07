@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="ife31data.js"></script>
+    <style>
+        #region-select,
+        #product-select {
+            font-size: 2rem;
+            padding-top: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: inline-block" id="region-select">
+        地区
+        <br>
+        <label>
+            <input type="checkbox" name="" id="" value="全选">全选</label>
+        <br>
+        <label>
+            <input type="checkbox" name="" id="" checked="checked" value="华东">华东</label>
+        <br>
+        <label>
+            <input type="checkbox" name="" id="" value="华南">华南</label>
+        <br>
+        <label>
+            <input type="checkbox" name="" id="" value="华北">华北</label>
+        <br>
+    </div>
+    <div style="display: inline-block" id="product-select">
+        商品种类
+        <br>
+        <label>
+            <input type="checkbox" name="" id="" value="全选">全选</label>
+        <br>
+        <label>
+            <input type="checkbox" name="" id="" checked="checked" value="手机">手机</label>
+        <br>
+        <label>
+            <input type="checkbox" name="" id="" value="笔记本">笔记本</label>
+        <br>
+        <label>
+            <input type="checkbox" name="" id="" value="智能音箱">智能音箱</label>
+        <br>
+    </div>
+    <div id="table-wrapper"></div>
+
+    <script>
+        const rs = document.querySelector("#region-select");
+        const ps = document.querySelector("#product-select");
+        const arr = ["商品", "地区", "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+        const tableWrapper = document.querySelector("#table-wrapper");
+        // 商品、地区、1月、2月……12月，然后共有14列
+        function getData() {
+            return [rs.value, ps.value];
+        }
+
+        function renderTable(data) {
+            const table = document.createElement("table");
+            const thead = document.createElement("thead");
+            const theadTr = document.createElement("tr");
+            thead.appendChild(theadTr);
+            table.appendChild(thead);
+            for (let i = 0; i < arr.length; i += 1) {
+                const th = document.createElement("th");
+                th.appendChild(document.createTextNode(arr[i]));
+                theadTr.appendChild(th);
+            }
+            for (let i = 0; i < sourceData.length; i += 1) {
+                if (sourceData[i].region === data[0] && sourceData[i].product === data[1]) {
+                    const tbodyTr = document.createElement("tr");
+                    tbodyTr.innerHTML +=
+                        `<td>${sourceData[i].product}</td><td>${sourceData[i].region}</td>`;
+                    for (let j = 0; j < sourceData[i].sale.length; j += 1) {
+                        const td = document.createElement("td");
+                        td.appendChild(document.createTextNode(sourceData[i].sale[j]));
+                        tbodyTr.appendChild(td);
+                    }
+                    table.appendChild(tbodyTr);
+                }
+            }
+            tableWrapper.appendChild(table);
+        }
+
+        function onchange() {
+            // 根据select选项获取数据
+            while (tableWrapper.children.length) {
+                tableWrapper.removeChild(tableWrapper.children[0]);
+            }
+            renderTable(getData());
+        }
+        rs.addEventListener("change", onchange);
+        ps.addEventListener("change", onchange);
+    </script>
+</body>
+
+</html>
