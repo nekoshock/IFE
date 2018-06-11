@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="ife31data.js"></script>
+    <style>
+        #region-select,
+        #product-select {
+            font-size: 2rem;
+            padding-top: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="region-select">
+        地区
+        <label>
+            <input type="checkbox" name="" id="" value="全选">全选</label>
+
+        <label>
+            <input type="checkbox" name="" id="" checked="checked" value="华东">华东</label>
+
+        <label>
+            <input type="checkbox" name="" id="" value="华南">华南</label>
+
+        <label>
+            <input type="checkbox" name="" id="" value="华北">华北</label>
+
+    </div>
+    <div id="product-select">
+        商品种类
+
+        <label>
+            <input type="checkbox" name="" id="" value="全选">全选</label>
+
+        <label>
+            <input type="checkbox" name="" id="" checked="checked" value="手机">手机</label>
+
+        <label>
+            <input type="checkbox" name="" id="" value="笔记本">笔记本</label>
+
+        <label>
+            <input type="checkbox" name="" id="" value="智能音箱">智能音箱</label>
+
+    </div>
+    <div id="table-wrapper"></div>
+
+    <script>
+        const rs = document.querySelectorAll("#region-select input");
+        const rsDiv = document.querySelector("#region-select");
+        const ps = document.querySelectorAll("#product-select input");
+        const psDiv = document.querySelector("#product-select");
+        const arr = ["商品", "地区", "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+        const tableWrapper = document.querySelector("#table-wrapper");
+        // 商品、地区、1月、2月……12月，然后共有14列
+        function getData(choose) {
+            const arrRegion = [];
+            const arrProduct = [];
+            const arr2 = [];
+            const result = [];
+            for (let i = 0; i < rs.length; i += 1) {
+                if (rs[i].checked) {
+                    arrRegion.push(rs[i].value);
+                }
+            }
+            for (let i = 0; i < ps.length; i += 1) {
+                if (ps[i].checked) {
+                    arrProduct.push(ps[i].value);
+                }
+            }
+            for (let j = 0; j < sourceData.length; j += 1) {
+                if (arrRegion.indexOf(sourceData[j].region) >= 0 &&
+                    arrProduct.indexOf(sourceData[j].product) >= 0) {
+                    arr2.push(sourceData[j]);
+                }
+            }
+            for (let i = 0; i < arr2.length; i += 1) {
+                const arr3 = [];
+                if (choose) {
+                    arr3.push(arr2[i].region);
+                    arr3.push(arr2[i].product);
+                } else {
+                    arr3.push(arr2[i].product);
+                    arr3.push(arr2[i].region);
+                }
+                for (let j = 0; j < arr2[i].sale.length; j += 1) {
+                    arr3.push(arr2[i].sale[j]);
+                }
+                arr2[i] = arr3;
+            }
+            while (arr2.length > 0) {
+                result.push(arr2.pop());
+                const temp = result[result.length - 1][0];
+                for (let i = 0; i < arr2.length; i += 1) {
+                    if (arr2[i][0] === temp) {
+                        arr2[i][0] = "null";
+                        result.push(arr2[i]);
+                        arr2.splice(i, 1);
+                        i -= 1;
+                    }
+                }
+            }
+            return result;
+        }
+
+        function childrenSeletor(element, pro, value) {
+            const el = element;
+            const va = value;
+            const elArr = [el];
+            const result = [];
+            while (elArr.length > 0) {
+                const ele = elArr.shift();
+                if (ele[pro] !== undefined && ele[pro] === va) {
+                    result.push(ele);
+                }
+                if (ele.children) {
+                    for (let i = 0; i < ele.children.length; i += 1) {
+                        elArr.push(ele.children[i]);
+                    }
+                }
+            }
+            return result;
+        }
+
+        function renderTable(data, choose) {
+            if (data.length > 0) {
+                const table = document.createElement("table");
+                const thead = document.createElement("thead");
+                const theadTr = document.createElement("tr");
+                thead.appendChild(theadTr);
+                table.appendChild(thead);
+                if (choose) {
+                    for (let i = 1; i >= 0; i -= 1) {
+                        const th = document.createElement("th");
+                        th.appendChild(document.createTextNode(arr[i]));
+                        theadTr.appendChild(th);
+                    }
+                    for (let i = 2; i < arr.length; i += 1) {
+                        const th = document.createElement("th");
+                        th.appendChild(document.createTextNode(arr[i]));
+                        theadTr.appendChild(th);
+                    }
+                } else {
+                    for (let i = 0; i < arr.length; i += 1) {
+                        const th = document.createElement("th");
+                        th.appendChild(document.createTextNode(arr[i]));
+                        theadTr.appendChild(th);
+                    }
+                }
+
+                for (let i = 0; i < data.length; i += 1) {
+                    const tbodyTr = document.createElement("tr");
+                    for (let j = 0; j < data[i].length; j += 1) {
+                        const td = document.createElement("td");
+                        td.appendChild(document.createTextNode(data[i][j]));
+                        if (data[i][j] !== "null") {
+                            tbodyTr.appendChild(td);
+                            if (j === 0) {
+                                let temp = 1;
+                                while (typeof (data[i + temp]) !== "undefined" && data[i + temp][0] === "null") {
+                                    temp += 1;
+                                    tbodyTr.firstChild.rowSpan = temp;
+                                }
+                            }
+                        }
+                    }
+                    table.appendChild(tbodyTr);
+                }
+                tableWrapper.appendChild(table);
+            }
+        }
+
+        function checkedNum(e) {
+            const checked = childrenSeletor(e, "checked", true);
+            return checked.length;
+        }
+
+        function allSelection(e) {
+            let focusDiv = e;
+            while (focusDiv.nodeName.toLowerCase() !== "div") {
+                focusDiv = focusDiv.parentNode;
+            }
+
+            for (let i = 1; i < focusDiv.children.length; i += 1) {
+                focusDiv.children[i].children[0].checked = true;
+            }
+        }
+
+        function onchange(e) {
+            if (e.target.nodeName.toLowerCase() === "input") {
+                while (tableWrapper.children.length) {
+                    tableWrapper.removeChild(tableWrapper.children[0]);
+                }
+                let focusDiv = e.target;
+                while (focusDiv.nodeName.toLowerCase() !== "div") {
+                    focusDiv = focusDiv.parentNode;
+                }
+                const allSelectionBtn = childrenSeletor(focusDiv, "value", "全选")[0];
+                allSelectionBtn.checked = false;
+                if (e.target.value === "全选") {
+                    allSelection(e.target);
+                }
+                const checked = checkedNum(focusDiv);
+                if (checked >= focusDiv.children.length - 1) {
+                    allSelectionBtn.checked = true;
+                } else {
+                    allSelectionBtn.checked = false;
+                }
+                let c;
+                if (checkedNum(rsDiv) === 1) {
+                    if (checkedNum(psDiv) === 1) {
+                        c = 0;
+                    } else {
+                        c = 1;
+                    }
+                } else {
+                    c = 0;
+                }
+                renderTable(getData(c), c);
+            }
+        }
+
+        rs[0].parentNode.parentNode.addEventListener("click", onchange);
+        ps[0].parentNode.parentNode.addEventListener("click", onchange);
+    </script>
+</body>
+
+</html>
