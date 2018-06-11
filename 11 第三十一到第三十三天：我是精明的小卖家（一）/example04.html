@@ -63,6 +63,7 @@
             const arrProduct = [];
             const arr2 = [];
             const result = [];
+            const arr4 = [];
             for (let i = 0; i < rs.length; i += 1) {
                 if (rs[i].checked) {
                     arrRegion.push(rs[i].value);
@@ -93,16 +94,28 @@
                 }
                 arr2[i] = arr3;
             }
+            arr2.reverse();
             while (arr2.length > 0) {
-                result.push(arr2.pop());
-                const temp = result[result.length - 1][0];
+                arr4.push(arr2.pop());
+                const temp = arr4[arr4.length - 1][0];
                 for (let i = 0; i < arr2.length; i += 1) {
                     if (arr2[i][0] === temp) {
                         arr2[i][0] = "null";
-                        result.push(arr2[i]);
+                        arr4.push(arr2[i]);
                         arr2.splice(i, 1);
                         i -= 1;
                     }
+                }
+                arr4.sort((a, b) => {
+                    if (a[0] === "华东" || b[0] === "华南") {
+                        return -1;
+                    } else if (b[0] === "华东" || a[0] === "华南") {
+                        return 1;
+                    }
+                    return -1;
+                });
+                while (arr4.length > 0) {
+                    result.push(arr4.shift());
                 }
             }
             return result;
