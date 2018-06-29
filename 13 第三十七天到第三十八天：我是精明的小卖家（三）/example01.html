@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../11 第三十一到第三十三天：我是精明的小卖家（一）/ife31data.js"></script>
+    <script src="wheel.js"></script>
+    <style>
+        td {
+            width: 4em;
+            text-align: center;
+        }
+    </style>
+</head>
+<div id="table-paper"></div>
+<button id="submit">submit</button>
+
+<body>
+    <script>
+        const tablePaper = document.querySelector("#table-paper");
+        const btn = document.querySelector("#submit");
+        let sale;
+        const arr = ["商品", "地区", "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+        if (!localStorage.getItem("sale")) {
+            sale = sourceData[0].sale;
+            sale.unshift(sourceData[0].region);
+            sale.unshift(sourceData[0].product);
+        } else {
+            sale = localStorage.getItem("sale").split(",");
+        }
+        const table = document.createElement("table");
+        tablePaper.appendChild(table);
+        const thead = document.createElement("thead");
+        table.appendChild(thead);
+        const theadRow = document.createElement("tr");
+        thead.appendChild(theadRow);
+        for (let i = 0; i < arr.length; i += 1) {
+            const th = document.createElement("th");
+            th.innerHTML = arr[i];
+            theadRow.appendChild(th);
+        }
+        const tr = document.createElement("tr");
+        table.appendChild(tr);
+        for (let i = 0; i < sale.length; i += 1) {
+            const td = document.createElement("td");
+            const text = document.createTextNode(sale[i]);
+            td.appendChild(text);
+            tr.appendChild(td);
+        }
+
+        function result(element, value) {
+            const ele = element;
+            ele.innerHTML = value;
+            ele.removeAttribute("style");
+        }
+
+        function valueChange(e) {
+            if (e.target.nodeName.toLowerCase() === "td") {
+                const value = e.target.innerHTML;
+                const input = document.createElement("input");
+                const btn1 = document.createElement("button");
+                const btn2 = document.createElement("button");
+                input.setAttribute("value", value);
+                input.setAttribute("type", "text");
+                input.setAttribute("size", 3);
+                e.target.innerHTML = "";
+                e.target.setAttribute("style", "width:12em");
+                e.target.appendChild(input);
+                input.selectionStart = value.length;
+                input.selectionEnd = value.length;
+                input.focus();
+                btn1.appendChild(document.createTextNode("确定"));
+                btn2.appendChild(document.createTextNode("取消"));
+                e.target.appendChild(btn1);
+                e.target.appendChild(btn2);
+                btn1.addEventListener("click", () => {
+                    result(e.target, input.value);
+                });
+                btn2.addEventListener("click", () => {
+                    result(e.target, value);
+                });
+
+                const cancel = () => {
+                    result(e.target, value);
+                };
+                const define = () => {
+                    result(e.target, input.value);
+                };
+                input.addEventListener("blur", cancel);
+                btn1.addEventListener("mouseover", () => {
+                    input.removeEventListener("blur", cancel);
+                });
+                btn2.addEventListener("mouseover", () => {
+                    input.removeEventListener("blur", cancel);
+                });
+                btn1.addEventListener("mouseout", () => {
+                    input.addEventListener("blur", cancel);
+                });
+                btn2.addEventListener("mouseout", () => {
+                    input.addEventListener("blur", cancel);
+                });
+                input.addEventListener("keydown", (ev) => {
+                    if (ev.keyCode === 13) {
+                        define();
+                    }
+                    if (ev.keyCode === 27) {
+                        cancel();
+                    }
+                });
+            }
+        }
+
+        function save() {
+            const saleArr = document.querySelectorAll("td");
+            const saleData = [];
+            for (let i = 0; i < saleArr.length; i += 1) {
+                saleData.push(saleArr[i].textContent);
+            }
+            localStorage.setItem("sale", saleData);
+        }
+        btn.addEventListener("click", save);
+        tablePaper.addEventListener("click", valueChange);
+    </script>
+</body>
+
+</html>
