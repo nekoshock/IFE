@@ -12,17 +12,7 @@
 </head>
 
 <body>
-    <canvas id="canvas" width="240" height="240">
 
-    </canvas>
-    <script>
-        const can = document.querySelector("#canvas");
-        const ctx = can.getContext("2d");
-        for (let i = 0; i < 16; i += 1) {
-            ctx.fillRect(60 * (i % 4), 60 * (Math.floor(i / 4)), 60, 60);
-            ctx.fillStyle = `rgb(${15 * i},${15 * i},${15 * i})`;
-        }
-    </script>
 </body>
 
 </html>
