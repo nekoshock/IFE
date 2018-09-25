@@ -17,7 +17,33 @@
         <dt>导入样式</dt>
         <dd>在head里放 link rel="stylesheet" href="style.css"</dd>
         <dd>CSS导入式方法 在style标签最开始处写 @import "地址" 或者@import url(地址) 与link方法的差异是import是在读取完HTML之后加载.这个方法很少用.</dd>
-
+        <dt>CSS方法优先级</dt>
+        <dd>improtant>style="">style≈import≈link</dd>
+        <dd>行内样式优先于内部样式优先于外部样式,同级谁后加载谁优先</dd>
+        <dt>选择器</dt>
+        <dd>
+            <dl>
+                <dt>
+                    标签选择器: p,h1,div....
+                </dt>
+                <dt>
+                    类选择器: html标签里设置Class属性
+                </dt>
+                <dd>
+                    CSS中用 .class名{CSS}来进行样式设置
+                    筛选特定标签且拥有特定类: 标签名.类名 {CSS}
+                </dd>
+                <dt>ID选择器 #ID{CSS}</dt>
+                <dd>CSS本身对大小写不敏感,但对ID名和class名的大小写敏感.</dd>
+                <dt>* 全局选择器</dt>
+                <dt>后代选择器</dt>
+                <dd>空格 后代子子孙孙中所有符合条件的后代</dd>
+                <dt>伪类选择器</dt>
+                <dd>特殊状态下的选择器</dd>
+                <dd>链接的四种伪类: :link未访问状态 :visited已访问状态 :hover鼠标悬停状态 :active激活状态(点击)</dd>
+                <dd>:hover鼠标悬停状态 :active激活状态(点击) 不仅用于a标签,也用于其他元素.</dd>
+            </dl>
+        </dd>
     </dl>
 </body>
 
