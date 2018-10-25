@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS-position</title>
+</head>
+
+<body>
+    <h1>position</h1>
+    <dl>
+        <dt>五种定位模型</dt>
+        <dd>static 自然模型</dd>
+        <dd>relative 相对定位模型</dd>
+        <dd>absolute 绝对定位模型</dd>
+        <dd>fixed 固定定位模型</dd>
+        <dd>sticky 磁贴定位模型</dd>
+        <dt>static 自然模型</dt>
+        <dd>忽视top,left,z-index等声明</dd>
+        <dt>relative 相对定位</dt>
+        <dd>使元素成为可定位的祖先元素.(别人做定位的标杆参照物)</dd>
+        <dd>可以使用top,right,bottom,left,z-index进行相对定位,相对于此元素在普通流中的位置.</dd>
+        <dd>它的绝对定位的后代都可以相对于它进行绝对定位.</dd>
+        <dd>相对定位的元素不会离开普通流,原来的位置还是它的.</dd>
+        <dt>absolute 绝对定位</dt>
+        <dd>相对于最近的可定位祖先元素做绝对定位.</dd>
+        <dd>使元素脱离普通流,为脱离普通流的元素设置百分比时注意,这会让它相对于最近的可定位祖先元素.</dd>
+        <dd>如果top,left等设置为0,可以让它对齐祖先元素的各个边,甚至可以配合margin:0;让它垂直水平居中.</dd>
+        <dt>fixed 固定定位</dt>
+        <dd>相对于视口做定位.</dd>
+        <dt>sticky 磁贴定位</dt>
+        <dd>类似relative+fixed的完美结合,制造出吸附的效果.</dd>
+        <dd>如果最近的可定位祖先元素有滚动条,那它的偏移标尺就是最近的祖先元素.</dd>
+        <dd>如果最近的可定位祖先元素没有滚动条,那它就偏移标尺就是视口.</dd>
+        <dd>当偏移标尺捕获元素,元素就会在标尺位置变成fixed的显示方式.</dd>
+        <dd>兼容性不好.</dd>
+    </dl>
+</body>
+
+</html>

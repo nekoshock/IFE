@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example02</title>
+</head>
+
+<body>
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+        document.getElementById("trans-btn").onclick = function dec2bin() {
+            const num = document.getElementById("dec-number").value;
+            let arr = num.split(".");
+            if (arr[1] !== undefined) {
+                document.getElementById("result").innerHTML = "请输入非负整数";
+            } else if (parseFloat(num) >= 0) {
+                let number = parseFloat(num);
+                document.getElementById("result").innerHTML = "";
+                while (number > 0) {
+                    document.getElementById("result").innerHTML += (number % 2);
+                    number = (number - (number % 2)) / 2;
+                }
+                arr = document.getElementById("result").innerHTML.split("");
+                arr = arr.reverse();
+                document.getElementById("result").innerHTML = arr.join("");
+            } else {
+                document.getElementById("result").innerHTML = "请输入非负整数";
+            }
+        };
+    </script>
+</body>
+
+</html>

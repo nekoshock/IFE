@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS_chapter06</title>
+    <link rel="stylesheet" href="css01.css">
+</head>
+
+<body>
+
+    <div class='page'>
+        <h1>chapter06</h1>
+        <h2>JS基础语法 JS内置对象</h2>
+        <p>内置对象,主要涉及JS内置的几种对象类型和操作方法.</p>
+        <br>
+        <div class="cp">
+            <h3>属性和方法</h3>
+            <p>属性:如数组的length属性,能反应该对象的一些性质(最后无括号).
+                <br> 方法:如表单的submit(),能够在对象上执行的操作(最后有括号,括号内传参数).
+            </p>
+        </div>
+        <div class="pp">
+            <h2>日期对象</h2>
+            <div class="cp">
+                    var now = new Date();
+                    <br>now; // Wed Jun 24 2015 19:49:22 GMT+0800 (CST)
+                    <br>now.getFullYear(); // 2015, 年份
+                    <br>now.getMonth(); // 5, 月份，注意月份范围是0~11，5表示六月
+                    <br>now.getDate(); // 24, 表示24号
+                    <br>now.getDay(); // 3, 表示星期三
+                    <br>now.getHours(); // 19, 24小时制
+                    <br>now.getMinutes(); // 49, 分钟
+                    <br>now.getSeconds(); // 22, 秒
+                    <br>now.getMilliseconds(); // 875, 毫秒数
+                    <br>now.getTime(); // 1435146562875, 以number形式表示的时间戳
+            </div>
+            <div class="cp">
+                <h3>创建对象</h3>
+                <p>var NEWdate = new daTe();</p>
+                <p onmouseover="showDate(this)">放上来,获取现在时间.</p>
+            </div>
+            <div class="cp">
+                <h3>获取/设置年份</h3>
+                <p>获取/设置年份方法:get/setFullYear();</p>
+                <p onmouseover="showYear(this)">放上来,获取现在年份.</p>
+            </div>
+            <div class="cp">
+                <h3>返回星期几</h3>
+                <p>获取当日星期几的方法:getDay(); 返回的是0-6的数字,0表示星期天.</p>
+                <p onmouseover="showDay(this)">放上来,获取现在星期几.</p>
+            </div>
+            <div class="cp">
+                <h3>获得/设置时间戳</h3>
+                <p>get/setTime(); JS的时间是基于1970年1月1日0时起不断自增的毫秒数,这个时间戳就是符合ISO8601的一个数字(number).</p>
+                <p onmouseover="showTime(this)" id="showtime">放上来,获取现在时间戳.</p>
+                <p>这个时间戳也能改为时间,时区由浏览器取本地时区.注意函数里可以是number类型,但从HTML页面上拿到的innerHTML都是string.</p>
+                <p onmouseover="showTimeA(this,'showtime')">放上来,获取上面的时间戳改为时间.</p>
+            </div>
+        </div>
+        <div class="pp">
+            <h2>字符串</h2>
+            <div class="cp">
+                <h3>简单操作/属性</h3>
+                <p onclick="uppercase(showstr)">将字符串改为大写:toUpperCase();</p>
+                <p onclick="lowercase(showstr)">将字符串改为小写:toLowerCase();</p>
+                <p onclick="strlength(showstr,this)">显示字符串长度: .length ;会算入空格和标点符号.</p>
+                <p id="showstr">This is example.</p>
+                <p>虽然在HTML显示的时候会省略掉重复的空格,但计算长度时会算入其中.</p>
+            </div>
+            <div class="cp">
+                <h3>返回指定位置的字符</h3>
+                <p>charAt(index); 返回index位置的字符.index的计数规则如数组,既第一个字符为0位置,最后一个字符为字符长度-1的位置.</p>
+                <p id="showcharat">This is example.</p>
+                <p>输入提取的位置
+                    <input type="text" id="index">
+                    <input type="button" value="提取" onclick="charat(index,showcharat)">
+                </p>
+            </div>
+            <div class="cp">
+                <h3>获取指定字符串首次出现的位置</h3>
+                <p>indexof(指定目标字符串,开始检索位置); 若开始检索位置(index)为空则默认从字符串开始位置找起.</p>
+                <p>若搜到,返回首字母的index位置;若没搜到,返回-1.注意区分大小写.</p>
+                <p id="showindexof">This is example.</p>
+                <p>输入查找字符串
+                    <input type="text" id='indexof'>
+                    <input type="button" value="查找" onclick="showif(indexof,showindexof)">
+                </p>
+            </div>
+            <div class="cp">
+                <h3>将字符串分割为数组</h3>
+                <p>split(分割器,返回数组最大长度); 分割器可以是字符串或者正则表达式.当分割器是字符串时,分割会从分割器两端进行分割,返回值中不会包含分割器.
+                    <br> 如果 separator 是包含子表达式的正则表达式，那么返回的数组中包括与这些子表达式匹配的字串（但不包括与整个正则表达式匹配的文本）。</p>
+                <p>请输入分割器
+                    <input type="text" id="spliter">
+                    <br> 请输入返回数组大小
+                    <input type="text" id="maxarr">
+                </p>
+                <p id="split" onmouseover="split(this,spliter,maxarr)">分割展示文本,This is example.</p>
+            </div>
+            <div class="cp">
+                <h3>提取指定起始位置的字符串</h3>
+                <p>substring(开始位置,结束位置(可选,默认到结束))</p>
+                <p>
+                    1. 返回的内容是从 start开始(包含start位置的字符)到 stop-1 处的所有字符，其长度为 stop 减start。
+                    <br> 2. 如果参数 start 与 stop 相等，那么该方法返回的就是一个空串（即长度为 0 的字符串）。
+                    <br> 3. 如果 start 比 stop 大，那么该方法在提取子串之前会先交换这两个参数。
+                </p>
+                <p>开始位置
+                    <input type="text" id="substart">
+                    <br> 结束位置
+                    <input type="text" id="subend">
+                </p>
+                <p onmouseover="substring(this,substart,subend)">尽管走下去,不必逗留着去采花儿来保存,因为一路上花朵自会开放的.</p>
+            </div>
+            <i>type不严格真的很不爽,不知道哪里就不能用string当number使.</i>
+            <div class="cp">
+                <h3>提取指定起始位置和长度的字符串</h3>
+                <p>substr(起始位置,长度); 不是很好用,实际用起来容易有bug吧,对于起始位置为负数等问题都挺麻烦的.</p>
+            </div>
+        </div>
+        <div class="pp">
+            <h2>Math对象</h2>
+            <div class="cp">
+                <dl>
+                    <dt>向上取整 Math.ceil(数);</dt>
+                    <dd>
+                        <i>ceil:天花板;</i> 它返回的是大于或等于x，并且与x最接近的整数。</dd>
+                    <dt>向下取整 Math.floor(数);</dt>
+                    <dd>
+                        <i>floor:地板;</i> 返回的是小于或等于x，并且与 x 最接近的整数。</dd>
+                    <dt>四舍五入 Math.round(数);</dt>
+                    <dd>返回与x最接近的整数,如果x与两边的整数同等接近,就返回接近正无穷方向的整数.</dd>
+                    <dt>随机数 Math.random();</dt>
+                    <dd>返回一个0到1之间的数.可以通过成*10或取整等方法修饰成随机整数.</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="pp">
+            <h2>数组对象</h2>
+            <figure>
+                <img src="image/array.jpg" alt="数组操作方法">
+                <figcaption>数组操作方法</figcaption>
+            </figure>
+            <div class="cp">
+                <h3>逆检索 indexOf();</h3>
+                <p>arr.indexOf(值); indexOf可以用值检索返回值所在位置.注意值的类型必须正确,比如string和number.</p>
+                <p id="js-arrindexof">数组</p>
+                <p>返回从头开始第一个被检索到的值的位置.</p>
+            </div>
+            <div class="cp">
+                <h3>截取指定位置段数组 slice();</h3>
+                <p>arr.slice(开始位置(可选,默认为0),结束位置(可选,默认为最后)); 如果不给slice();任何参数,就能很方便的复制数组.</p>
+                <p>
+                    <i>顺道一提:引用类型(对象\数组等)的数据是放在堆里的,变量里放的是指针.基本类型(string\number等)是放在栈里面.
+                        <br> 当两个引用类型做===比较时,比较的不是内部是否一样,而是引用源是否是同一个.(待证)
+                    </i>
+                </p>
+            </div>
+            <div class="cp">
+                <h3>数组结尾操作 push();和pop();</h3>
+                <p>arr.push(若干元素); 将元素推入数组结尾.</p>
+                <p>arr.pop(); 返回数组末尾元素,并在数组中删除末尾的元素,数组长度-1.</p>
+            </div>
+            <div class="cp">
+                <h3>数组开头操作 unshift();和shift();</h3>
+                <p>arr.unshift(若干元素); 将元素添加入数组头部.数组原元素位置向后顺延.</p>
+                <p>arr.shift(); 返回数值第一个元素,并在数组中删除此元素,数组长度-1.</p>
+            </div>
+            <div class="cp">
+                <h3>数组排序 sort();</h3>
+                <p>arr.sort(方法,可选);
+                    <i>sort:整理;</i> 将数组按一定方法排序,若方法为空就按unicode码顺序进行排序.</p>
+                <p>方法函数(a,b):进行两个参数(如 a-b)的比较,当返回>=1时,a排在b之后.当返回
+                    <=-1时,a排在b之前.当返回值大于-1且小于1时,a和b位置不变.</p>
+            </div>
+            <div class="cp">
+                <h3>数组顺序颠倒 reverse();</h3>
+                <p>arr.reverse();
+                    <i>reverse:颠倒;</i>将数组内的顺序完全反转.</p>
+            </div>
+            <div class="cp">
+                <h3>数组万能修改法 splice();</h3>
+                <p>arr.splice(开始位置,删除元素个数,添加元素1,添加元素2......,添加元素n);
+                    <i>splice:胶接;</i> 方法会以数组形式返回被删除的元素. </p>
+            </div>
+            <div class="cp">
+                <h3>数组连接 concat();</h3>
+                <p>arr.concat(连入的数组/元素1,连入的数组/元素2......连入的数组/元素n) concat()不会修改当前数组,而是返回一个新数组.当连入数组时,会自动将数组拆开然后添加到新数组中.</p>
+            </div>
+            <div class="cp">
+                <h3>数组转字符串 join();</h3>
+                <p>arr.join("任意元素连接符"); join()会在元素之间插入指定连接符(例如逗号,顿号,或者什么都不写),然后返回一个字符串.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showDate(params) {
+            const obJect = params;
+            const daTe = new Date();
+            obJect.innerHTML = daTe;
+        }
+
+        function showYear(params) {
+            const obJect = params;
+            const daTe = new Date();
+            obJect.innerHTML = daTe.getFullYear();
+        }
+
+        function showDay(params) {
+            const obJect = params;
+            const daTe = new Date();
+            const day = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            obJect.innerHTML = day[daTe.getDay()];
+        }
+
+        function showTime(params) {
+            const obJect = params;
+            const daTe = new Date();
+            obJect.innerHTML = daTe.getTime();
+        }
+
+        function showTimeA(paramsA, paramsB) {
+            const obJect = paramsA;
+            const nowTime = document.getElementById(paramsB).innerHTML;
+            const now = parseInt(nowTime, 10);
+            obJect.innerHTML = new Date(now);
+        }
+
+        function uppercase(para) {
+            const obj = para;
+            obj.innerHTML = obj.innerHTML.toUpperCase();
+        }
+
+        function lowercase(para) {
+            const obj = para;
+            obj.innerHTML = obj.innerHTML.toLowerCase();
+        }
+
+        function strlength(para1, para2) {
+            const obj1 = para1;
+            const obj2 = para2;
+            obj2.innerHTML = obj1.innerHTML.length;
+        }
+
+        function charat(para1, para2) {
+            const obj1 = parseInt(para1.value, 0);
+            const obj2 = para2.innerHTML;
+            alert(`第${obj1}位的字符是${obj2.charAt(obj1 - 1)};它的index是${obj1 - 1}`);
+        }
+
+        function showif(para1, para2) {
+            const index = para1.value;
+            const text = para2.innerHTML;
+            alert(text.indexOf(index));
+        }
+
+        function split(para, para2, para3) {
+            const spliter = para2.value;
+            const maxarr = para3.value;
+            const obj = para;
+            const text = obj.innerHTML;
+            obj.innerHTML = obj.innerHTML.split(spliter, maxarr);
+            obj.onmouseout = () => {
+                obj.innerHTML = text;
+            };
+        }
+
+        function substring(id, para, para2) {
+            const start = para.value;
+            const end = para2.value;
+            const str = id;
+            const strr = str.innerHTML;
+            if (start !== "") {
+                str.innerHTML = strr.substring(start, end);
+                str.onmouseout = () => {
+                    str.innerHTML = strr;
+                    str.onmouseout = () => {};
+                };
+            }
+        }
+
+        (function indexof() {
+            const id = document.getElementById("js-arrindexof");
+            const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", 1, 2, 3, 4,
+                5, 6, 7, 8, 9, 0,
+            ];
+            id.onmouseover = () => {
+                id.innerHTML = arr.indexOf("9");
+            };
+        }());
+    </script>
+</body>
+
+</html>

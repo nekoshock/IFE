@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS文本样式</title>
+    <style>
+        body {
+            margin: 0 auto;
+            width: 1024px;
+        }
+    </style>
+</head>
+
+<body>
+    <dl>
+        <dt>文字样式设置</dt>
+        <dd>字体:font-family</dd>
+        <dd>文字大小:font-size</dd>
+        <dd>文字颜色:color</dd>
+        <dd>文字粗细:font-weight</dd>
+        <dd>文字样式:font-style</dd>
+        <dt>font-family</dt>
+        <dd>{font-family:字体1,字体2,字体3......;}从前往后不断寻找,直到找到或者使用系统默认字体</dd>
+        <dd>引号嵌套的时候使用单双引号区分.外层双引号,内层单引号.</dd>
+        <dt>font-size</dt>
+        <dd>绝对单位:in英寸 cm厘米 mm毫米等等 了解就好</dd>
+        <dd>相对单位:px,受分辨率大小影响.</dd>
+        <dd>相对单位:em,相对父元素大小.</dd>
+        <dd>相对单位:%,相对父元素大小.</dd>
+        <dt>color</dt>
+        <dd>可以用具体颜色名称,用RGB格式,用十六进制</dd>
+        <dt>font-weight</dt>
+        <dd>font-weight:normal|bold|bolder|lighter|100~900</dd>
+        <dd>虽然font-weight的值有很多,但受限于字体本身所以只有normal和bold能显示.</dd>
+        <dt>font-style</dt>
+        <dd>font-style:normal|italic斜体(常用)|oblique倾斜(不常用)</dd>
+        <dt>font-variant</dt>
+        <dd>font-variant:normal|small-caps(小写字母大小不变的转化为大写字母)</dd>
+        <dt>font样式简写</dt>
+        <dd>font: font-style font-variant font-weight font-size/line-height(必须) font-family(必须)</dd>
+        <dd>先三者的顺序是任意的,但字体大小和字体是必须的,顺序也必须是先大小后字体.</dd>
+        <dd>可以加入行高:font-size和line-height写在一起,作为同一组并用斜杠隔开.</dd>
+    </dl>
+    <br>
+    <dl>
+        <dt>文本对齐方式</dt>
+        <dd>text-align:left|center|right|justify;</dd>
+        <dd>text-align只对块级元素有效</dd>
+        <dt>行高 line-height</dt>
+        <dd>line-height:长度值|百分比;</dd>
+        <dd>继承:继承的是计算值,而不会继承百分比或者em的值.</dd>
+        <dt>text-indent 首行缩进(倒不如说首行空格)</dt>
+        <dt>垂直对齐 vertical-align(只对行内元素生效)</dt>
+        <dd>vertical-align:baseline|sub|super|top|text-top|middle|bottom|text-bottom|长度|百分比;</dd>
+        <dd>sub下标,super上标.</dd>
+        <dd>baseline,middle,text-bottom,text-top 英文文本的四条基线</dd>
+        <dd>top,bottom行内最高元素的顶端和行内最低元素的底端.</dd>
+        <dd>百分比,相对于行高移动距离,向下为负数.</dd>
+        <dd>可以调整table的单元格(和display:table-cell)</dd>
+        <dt>综合应用:文本垂直居中</dt>
+        <dd>单行文字垂直居中:line-height设置为整个高度.</dd>
+        <dd>多行文字垂直居中(即块级元素的垂直居中):display:table-cell;并在父元素中填写display:table;改变块级元素显示方式,然后用vertical-align调整垂直位置.</dd>
+        <dt>word-spacing 单词间距(文字之间的空格的大小),letter-spacing 字母间距</dt>
+        <dd>如果中文之间用空格隔开,word-spacing也会将这个空格装饰.</dd>
+        <dt>text-tantransfrom:capitalize首字母大写|uppercase强制大写|lowercase强制小写|none;</dt>
+        <dt>text-decoration:underline下划线|overline上划线|line-throught删除线|none无;</dt>
+        <dd>多条装饰线可以同时设置使用,但none会清空全部装饰线.</dd>
+    </dl>
+    <dl>
+        <dt>经验技巧</dt>
+        <dd>1.从外层向里层,从整体到局部制作内容.</dd>
+        <dd>2.借助手册或者网络./dd>
+    </dl>
+</body>
+
+</html>

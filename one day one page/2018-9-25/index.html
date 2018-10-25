@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS</title>
+    <style>
+        body {
+            margin: 0 auto;
+            width: 1024px;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,6 +48,36 @@
                 <dd>特殊状态下的选择器</dd>
                 <dd>链接的四种伪类: :link未访问状态 :visited已访问状态 :hover鼠标悬停状态 :active激活状态(点击)</dd>
                 <dd>:hover鼠标悬停状态 :active激活状态(点击) 不仅用于a标签,也用于其他元素.</dd>
+                <dd>：link>：visited>：hover>：active</dd>
+                <dt>CSS优先级</dt>
+                <dd>ID选择器>class选择器>标签选择器</dd>
+                <dt>CSS权值</dt>
+                <dd>标签选择器 权值为1</dd>
+                <dd>类选择器和伪类 权值为10</dd>
+                <dd>ID选择器 权值为100</dd>
+                <dd>行内样式 权值为1000</dd>
+                <dd>通配符选择器 权值为0</dd>
+                <dd>权值不同时按权值大小覆盖,权值相同时与设置元素更近的优先</dd>
+                <dd>例如使用派生/后代选择器会出现权值累加 如p b {...} 权值为"1+1"</dd>
+                <dt>!important规则</dt>
+                <dd>div {color:red !important;}</dd>
+                <dd>important高于行内样式</dd>
+            </dl>
+        </dd>
+        <dt>CSS命名</dt>
+        <dd>
+            <dl>
+                <dt>页面结构</dt>
+                <dd>页头:header</dd>
+                <dd>页面主体:main</dd>
+                <dd>页尾:footer</dd>
+                <dd>内容:content</dd>
+                <dd>容器:container 不常用</dd>
+                <dd>导航:nav</dd>
+                <dd>侧栏:sidebar</dd>
+                <dd>栏目:column</dd>
+                <dd>页面外围控制:wrapper</dd>
+                <dd>左 中 右: left center right</dd>
             </dl>
         </dd>
     </dl>

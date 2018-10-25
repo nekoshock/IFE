@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS_chapter05</title>
+    <link rel="stylesheet" href="css01.css">
+</head>
+
+<body>
+
+    <div class="page">
+        <h1>chapter05</h1>
+        <h2>JS基础语法 简单事件</h2>
+        <br>
+        <div class="content">
+            <h3>什么是事件</h3>
+            <p>事件即是可以被JS监测到的行为.</p>
+            <p>
+                <figure>
+                    <img src="image/eventlist.jpg" alt="事件列表">
+                    <figcaption>常见事件列表</figcaption>
+                </figure>
+            </p>
+        </div>
+        <div class="content">
+            <h3>鼠标经过事件 onmouseover</h3>
+            <p>与其说叫经过,倒不如说放上去.当鼠标移动到某项元素上,就会触发鼠标经过事件.</p>
+            <p>
+                <figure>
+                    <img src="image/001.jpg" alt="001" onmouseover="mouseOver(this)">
+                    <figcaption>鼠标经过事件</figcaption>
+                </figure>
+            </p>
+        </div>
+        <div class="content">
+            <h3>鼠标移开事件 onmouseout</h3>
+            <p>有移入就有移开,当鼠标从某项元素移开时触发事件.</p>
+            <p>
+                <figure>
+                    <img src="image/002.jpg" alt="002" onmouseout="mouseOut(this)">
+                    <figcaption>鼠标移开事件</figcaption>
+                </figure>
+            </p>
+        </div>
+        <div class="content">
+            <h3>光标聚焦事件 onfocus</h3>
+            <p>当鼠标(或者按tab键)选到某项(控件)元素时,元素就会获得光标(可用键盘操作,有光标符号等等),这就是光标聚焦了.然后相应事件会触发.</p>
+            <p>有趣的是,如果因此弹出一个alert,光标会聚焦到弹出的警告框,点了确定后,元素会重新获得光标,然后再弹框,重复循环.慕课的示例就是这样无限弹框.</p>
+            <p>
+                <input type="text" onfocus="foc(fo)" onblur="blu(fo)">
+            </p>
+            <p>
+                <figure id="fo">
+                    <img src="image/003.jpg" alt="003">
+                    <figcaption>光标聚焦事件</figcaption>
+                </figure>
+            </p>
+        </div>
+        <div class="content">
+            <h3>失焦事件 onblur</h3>
+            <p>
+                <i>(blur:模糊)</i>有聚焦就有失焦,当元素失去焦点时触发事件.</p>
+            <p>
+                <input type="text" onblur="blu(fo1)" onfocus="foc(fo1)">
+            </p>
+            <p>
+                <figure id="fo1">
+                    <img src="image/004.jpg" alt="004">
+                    <figcaption>失焦事件</figcaption>
+                </figure>
+            </p>
+        </div>
+        <div class="content">
+            <h3>内容选中事件 onselect</h3>
+            <p>当文本框(input type="text/password等等)"或文本域(textarea)中的文字被选中时,触发事件.选中就是当鼠标扩住了部分或全部文字时,而不是光标点到文本框就行.</p>
+            <textarea name="" cols="30" rows="10" onselect="sele()">这是一个文本域</textarea>
+            <input type="text" style="vertical-align:top;" value="text" onselect="sele()">
+            <input type="email" name="" style="vertical-align:top;" value="tencent@qq.com" onselect="sele()">
+            <input type="password" name="" style="vertical-align:top;" value="password" onselect="sele()">
+        </div>
+        <div class="content">
+            <h3>文本内容改变事件 onchange</h3>
+            <p>当文本框失去焦点时,如果内部文本与获得焦点时发生了改变,就会触发文本内容改变事件.</p>
+            <textarea name="" cols="30" rows="10" onchange="change()">这是一个文本域</textarea>
+            <input type="text" style="vertical-align:top;" value="text" onchange="change()">
+            <input type="email" name="" style="vertical-align:top;" value="tencent@qq.com" onchange="change()">
+            <input type="password" name="" style="vertical-align:top;" value="password" onchange="change()">
+        </div>
+        <div class="content">
+            <h3>加载事件 onload</h3>
+            <p>当页面被加载时(打开时),触发加载事件.加载事件要写在body标签上. &lt;body onload=""&gt;这么写.</p>
+        </div>
+        <div class="content">
+            <h3>卸载事件 onunload</h3>
+            <p>当页面被关闭(跳转\离开)时,触发卸载事件.也是写在body里比较好.</p>
+        </div>
+    </div>
+
+    <script>
+        const FO = document.getElementById("fo");
+        FO.style.visibility = "hidden";
+
+        function mouseOver(id) {
+            const Id = id;
+            Id.style.border = "5px solid #eee";
+        }
+
+        function mouseOut() {
+            alert("onmouseout");
+        }
+
+        function foc(id) {
+            const Id = id;
+            Id.style.visibility = "visible";
+        }
+
+        function blu(id) {
+            const Id = id;
+            Id.style.visibility = "hidden";
+        }
+
+        function sele() {
+            alert("文字被选中了.");
+        }
+
+        function change() {
+            alert("文本内容被改变了!");
+        }
+    </script>
+</body>
+
+</html>

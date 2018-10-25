@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example04</title>
+</head>
+
+<body>
+    <h1>消灭3</h1>
+    <input type="number" placeholder="开始数字" id="start-num">
+    <input type="number" placeholder="结束数字" id="end-num">
+    <button id="sub">变身</button>
+    <p id="result">结果</p>
+    <script>
+        document.getElementById("sub").onclick = function sub() {
+            const arr = [];
+            for (let i = parseInt(document.getElementById("start-num").value, 10), j = 0; i <= parseInt(document.getElementById("end-num").value, 10); i += 1, j += 1) {
+                if (i % 3 === 0) {
+                    arr[j] = "PA";
+                } else {
+                    arr[j] = i;
+                }
+            }
+            document.getElementById("result").innerHTML = arr.join(",");
+        };
+    </script>
+</body>
+
+</html>

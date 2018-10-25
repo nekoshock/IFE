@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML基础</title>
+</head>
+
+<body>
+    <H1>HTML基础</H1>
+    <h2>小细节:</h2>
+    <p>1.HTML大小写不敏感. <br>
+        2.注释方法&lt;!-- --&gt;
+    </p>
+    <h2>HTML基础语法</h2>
+    <dl>
+        <dt>列表</dt>
+        <dd>ol 有序列表
+            <dl>
+                <dd>
+                    type = 1 a A i I 等等...
+                </dd>
+            </dl>
+        </dd>
+        <dd>ul 无序列表
+            <dl>
+                <dd>
+                    type = square circle disc
+                </dd>
+            </dl>
+        </dd>
+        <dd>li 列表项 </dd>
+        <dd>
+            <dl>
+                <dt>定义列表</dt>
+                <dd>
+                    区域dl 项标题dt dd
+                </dd>
+            </dl>
+        </dd>
+
+    </dl>
+    <hr>
+    <dl>
+        <dt>图像</dt>
+        <dd>img src="图片地址" alt="文字替代内容,也可以给搜索引擎看"</dd>
+        <dd>
+            <dl>
+                <dt>绝对路径与相对路径</dt>
+                <dd>从盘符开始写地址和相对于页面文件的地址</dd>
+                <dt>上一级</dt>
+                <dd>../</dd>
+                <dt>下一级</dt>
+                <dd>/</dd>
+            </dl>
+        </dd>
+    </dl>
+    <hr>
+    <dl>
+        <dt>超链接</dt>
+        <dd>a href="链接地址" /a </dd>
+        <dd>跳转至站内或站外</dd>
+        <dd>空连接:地址写"#"</dd>
+        <dd>
+            <dl>
+                <dt>target属性:</dt>
+                <dd>_blank 打开新页面</dd>
+                <dd>_self 在当前页面打开页面,此项为默认</dd>
+                <dt>title属性:</dt>
+                <dd>鼠标放在链接上显示的提示信息</dd>
+                <dt>锚链接</dt>
+                <dd>在a标签里用name属性(链接命名)给链接定义锚的位置,用a标签herf="#name名"(感觉跟ID有点混?),实现快速跳转.</dd>
+                <dd>
+                    <dl>
+                        <dt>跳转到不同页面的锚位置</dt>
+                        <dd>跳转页面位置+名称#锚名称</dd>
+                    </dl>
+                </dd>
+                <dd>href="mailto:邮箱地址" 直接打开邮箱</dd>
+                <dd>href="文件地址" 下载</dd>
+            </dl>
+        </dd>
+    </dl>
+    <hr>
+    <dl>
+        <dt>
+            表格
+        </dt>
+        <dd>table tr td(th)</dd>
+        <dd>表格标题: caption</dd>
+        <dd>表格的结构:thead tbody tfoot 无论自上而下的写法如何,表格始终按thead tbody tfoot的顺序显示.</dd>
+        <dd>
+            <dl>
+                <dt>table的属性</dt>
+                <dd>bgcolor border width align</dd>
+                <dd>cellpadding 单元格和内容的空白</dd>
+                <dd>cellspacing 单元格之间的空白</dd>
+                <dd>frame 外部边框样式</dd>
+                <dd>rules 内部边框样式</dd>
+                <dt>tr的属性</dt>
+                <dd>bgcolor align水平对齐方式 Valign垂直对齐方式</dd>
+                <dt>td/th的属性</dt>
+                <dd>align Valign bgcolor border width height</dd>
+                <dd>colspan="" 跨列</dd>
+                <dd>rowspan="" 跨行</dd>
+                <dd>被跨行占用位置的单元格要删掉</dd>
+                <dt>thead tbody tfoot的属性</dt>
+                <dd>align Valign</dd>
+                <dt>表格嵌套</dt>
+                <dd>将新表格table写进td中</dd>
+            </dl>
+        </dd>
+    </dl>
+    <hr>
+    <dl>
+        <dt>表单</dt>
+        <dd>form input select option textarea optgroup radio</dd>
+        <dd>
+            <dl>
+                <dt>input</dt>
+                <dd>input type="" name=""</dd>
+                <dt>type:</dt>
+                <dd>text 文本框</dd>
+                <dd>
+                    <dl>
+                        <dt>
+                        <dd>
+                            name maxlength(可输入最大字符数) size(宽度) value placeholder
+                        </dd>
+                        </dt>
+                    </dl>
+                </dd>
+                <dd>password 暗文密码</dd>
+                <dd>file 简陋的文件上传按钮</dd>
+                <dd>submit 提交当前form所有内容</dd>
+                <dd>reset 重置按钮</dd>
+                <dd>button 做个按钮</dd>
+                <dd>
+                    <dl>
+                        <dt>
+                        <dd>
+                            name value(按钮上的文字)
+                        </dd>
+                        </dt>
+                    </dl>
+                </dd>
+                <dd>radio 单选框</dd>
+                <dd>
+                    <dl>
+                        <dt>
+                        <dd>
+                            name value checked
+                        </dd>
+                        </dt>
+                    </dl>
+                </dd>
+                <dd>checkbox 复选框</dd>
+                <dd>
+                    <dl>
+                        <dt>
+                        <dd>
+                            name value checked
+                        </dd>
+                        </dt>
+                    </dl>
+                </dd>
+                <dd>image 图像按钮 默认是提交 src="图像地址"</dd>
+                <dd>hidden 隐藏信息</dd>
+                <dt>下拉菜单</dt>
+                <dd>select option嵌套 多选multiple size将下拉菜单改为列表,显示的可选项数目 name selected</dd>
+                <dd>
+                    <dl>
+                        <dt>optgroup 为下拉菜单的选项进行分组</dt>
+                        <dd>select optgroup option 嵌套</dd>
+                        <dd>optgroup的属性 label="分组名"</dd>
+                        <dd>分组名不可选中,会用类似定义列表样式把option按组区分开</dd>
+                    </dl>
+                </dd>
+                <dt>textarea 多行文本域</dt>
+                <dd>name="" cols="" rows="" placeholder</dd>
+                <dt>form 标签</dt>
+                <dd>action="后台地址" method="get/post" name="表单名称" target="_blank _self等等"</dd>
+            </dl>
+
+
+        </dd>
+    </dl>
+</body>
+
+</html>
