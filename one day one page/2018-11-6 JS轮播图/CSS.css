@@ -1,0 +1,37 @@
+.main {
+    margin: 30px auto 0 auto;
+    width: 1200px;
+    height: 460px;
+    overflow: hidden;
+}
+
+.banner {
+    width: 1200px;
+    height: 460px;
+
+}
+
+
+.slide1 {
+    background: url(../../image/001.jpg);
+
+}
+
+.slide2 {
+    background: url(../../image/002.jpg);
+}
+
+.slide3 {
+    background: url(../../image/003.jpg);
+}
+
+.banner-slide {
+    width: 1200px;
+    height: 460px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/**
+这段写的不太好,background的设置确定了一切属性,导致repeat和position必须写在它的下面才能正确覆盖.
+**/
