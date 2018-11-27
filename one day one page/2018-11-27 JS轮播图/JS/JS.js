@@ -4,14 +4,14 @@ window.onload = function () {
     function byCN(className) {
         return typeof (className) === "string" ? document.getElementsByClassName(className) : className;
     }
-    // 获取元素
+    
     var navButton = byCN("nav-button"),
         nav = byCN("nav")[0],
         bannerSlide = byCN("banner-slide"),
         banner = byCN("banner")[0],
         index = 0,
         timer;
-    // 定时器
+    
     function setI() {
         timer = setInterval(nextPic, 1000);
     }
@@ -36,17 +36,17 @@ window.onload = function () {
 
     function change() {
         for (var i = 0, j = bannerSlide.length; i < j; i += 1) {
-            navButton[i].className = removeClass(navButton[i], "nav-active");
-            bannerSlide[i].className = removeClass(bannerSlide[i], "slide-active");
+            removeClass(navButton[i], "nav-active");
+            removeClass(bannerSlide[i], "slide-active");
         }
         navButton[index].className += " nav-active";
         bannerSlide[index].className += " slide-active";
     }
 
     function removeClass(ele, cl) {
-        return ele.className.replace(cl, "");
+        ele.className = ele.className.replace(cl, "");
     }
-    // 下面写的都不对 就大概这样了
+   
     setI();
     nav.onmouseout = setI;
     nav.onmouseover = clearI;

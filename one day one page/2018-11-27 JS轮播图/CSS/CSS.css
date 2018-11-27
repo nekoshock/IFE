@@ -29,6 +29,7 @@
 
 .nav-active {
     background-color: #ffcc00;
+    font-weight: bold;
 }
 
 .banner {
