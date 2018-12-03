@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQ读书学习</title>
+</head>
+
+<body>
+    <h1>导入JQ</h1>
+    <dl>
+        <dt>CDN分发</dt>
+        <dd>如 从bootCDN上直接链入等</dd>
+        <dt>下载到本地</dt>
+        <dd>从jquery.com上直接下载</dd>
+        <dt>.JS </dt>
+        <dd>开发版,完整无压缩</dd>
+        <dt>.min.js</dt>
+        <dd>生产版,压缩,混淆后的版本,用于产品和项目</dd>
+    </dl>
+    <h1>独特的JQ对象</h1>
+    <dl>
+        <dt>$(ele).attr/function()</dt>
+        <dd> </dd>
+        <dt>将DOM对象转化为JQ对象</dt>
+        <dd>$(DOM对象)</dd>
+        <dt>将JQ对象转化为DOM对象</dt>
+        <dd>$(DOM对象).get(0) get方法</dd>
+        <dd>$(DOM对象)[0] 数组方法</dd>
+    </dl>
+    <p></p>
+    <h1>JQ选择器</h1>
+    <dl>
+        <dt>JQ选择器支持CSS1到CSS3选择器</dt>
+        <dd>提取JQ对象的方法总会返回一个类数组的JQ对象集合,如果没有符合的元素那这个集合length为0,不会报错.</dd>
+    </dl>
+    <dl>
+        <dt>基本选择器</dt>
+        <dd>ID #id 返回单个元素</dd>
+        <dd>类 .class 返回集合元素</dd>
+        <dd>元素名 element 返回集合元素</dd>
+        <dd>通配符 * 返回集合元素</dd>
+        <dd>selector1,selector2,.......,selectorN 将匹配任意选择器的元素合并后一起返回.</dd>
+        <dt>层次选择器</dt>
+        <dt>后代</dt>
+        <dd>$("ancestor descendant") 后代选择器 选取ancestor里所有descendant元素.(子子孙孙)</dd>
+        <dt>子元素</dt>
+        <dd>$("parent>child") 子元素选择器 只选取parent下的child元素.(仅子代)</dd>
+        <dt>同级下一个</dt>
+        <dd>$("prev+next") 兄弟选择器 选取紧接在prev元素后同辈的next元素.(仅一个弟弟)</dd>
+        <dt>同级下面全部</dt>
+        <dd>$("prev~siblings") 全部弟弟选择器 选取所有在prev元素后面的同辈的siblings元素.(全部弟弟)</dd>
+        <dt>兄弟选择器等价方法 .next()</dt>
+        <dd>$("prev+next") 全等于 $("prev").next("next")</dd>
+        <dt>全部弟弟选择器等价方法 .nextAll()</dt>
+        <dd>$("prev~siblings") 全等于 $("prev").nextAll("siblings")</dd>
+        <dt>过滤选择器</dt>
+        <dd>过滤选择器通过特定过滤规则从元素集合中筛选符合规则的元素.</dd>
+        <dt>:first 选取第一个元素</dt>
+        <dd>如$("div:first") 选取所有div元素中第一个div</dd>
+        <dt>:last 选取最有一个元素</dt>
+        <dd>如$("div:last") 选取所有div元素中最后一个div</dd>
+        <dt>:not(selector) 去除所有与给定选择器匹配的元素</dt>
+        <dd>如$("input:not(.myClass)") 选取所有元素名为input且类不是myClass的元素.</dd>
+
+    </dl>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</body>
+
+</html>
