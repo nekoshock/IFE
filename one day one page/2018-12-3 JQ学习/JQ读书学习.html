@@ -30,7 +30,6 @@
         <dd>$(DOM对象).get(0) get方法</dd>
         <dd>$(DOM对象)[0] 数组方法</dd>
     </dl>
-    <p></p>
     <h1>JQ选择器</h1>
     <dl>
         <dt>JQ选择器支持CSS1到CSS3选择器</dt>
@@ -43,6 +42,8 @@
         <dd>元素名 element 返回集合元素</dd>
         <dd>通配符 * 返回集合元素</dd>
         <dd>selector1,selector2,.......,selectorN 将匹配任意选择器的元素合并后一起返回.</dd>
+    </dl>
+    <dl>
         <dt>层次选择器</dt>
         <dt>后代</dt>
         <dd>$("ancestor descendant") 后代选择器 选取ancestor里所有descendant元素.(子子孙孙)</dd>
@@ -56,6 +57,8 @@
         <dd>$("prev+next") 全等于 $("prev").next("next")</dd>
         <dt>全部弟弟选择器等价方法 .nextAll()</dt>
         <dd>$("prev~siblings") 全等于 $("prev").nextAll("siblings")</dd>
+    </dl>
+    <dl>
         <dt>过滤选择器</dt>
         <dd>过滤选择器通过特定过滤规则从元素集合中筛选符合规则的元素.</dd>
         <dt>:first 选取第一个元素</dt>
@@ -64,7 +67,171 @@
         <dd>如$("div:last") 选取所有div元素中最后一个div</dd>
         <dt>:not(selector) 去除所有与给定选择器匹配的元素</dt>
         <dd>如$("input:not(.myClass)") 选取所有元素名为input且类不是myClass的元素.</dd>
-
+        <dt>:even 选取所有索引是偶数的元素(0,2,4,6...)(即第一个,第三个,第五个...)</dt>
+        <dd>如$("input:even") 选取索引是偶数的input元素</dd>
+        <dt>:odd 选取所有索引是奇数的元素(1,3,5,7...)(即第二个,第四个,第六个...)</dt>
+        <dd>如$("input:even") 选取索引是奇数的input元素</dd>
+        <dt>:eq(index) 选取索引等于index的元素</dt>
+        <dd>如$("input:eq(1)) 选取索引等于1的input元素</dd>
+        <dt>:gt(index) 选取索引大于index的元素</dt>
+        <dd>如$("input:gt(1)") 选取索引大于1的input元素</dd>
+        <dt>:lt(index) 选取索引小于index的元素</dt>
+        <dd>如$("input:lt(1)") 选取索引小于1的元素</dd>
+        <dt>:header 选取所有标题元素(h1,h2,h3...)</dt>
+        <dd>如$(":header") 选取网页中所有的标题元素</dd>
+        <dt>:animated 选取当前正在执行动画的所有元素</dt>
+        <dd>如$("div:animated") 选取当前正在执行动画的div元素</dd>
+        <dt>:focus 选取当前获取焦点的元素</dt>
+        <dd>如$(":focus") 选取当前获取焦点的元素.</dd>
+    </dl>
+    <dl>
+        <dt>内容过滤筛选器</dt>
+        <dd>主要体现在它所包含的子元素或者文本内容上.</dd>
+        <dt>:empty 选取不包含子元素或者文本的元素</dt>
+        <dd>如$("div:empty") 选取不包含子元素(包括文本元素)的空div元素.</dd>
+        <dd>仅此项是与CSS共有的选择器,其他三项为JQ独有.</dd>
+        <dt>:contains(text) 选在含有text文本的元素</dt>
+        <dd>如$("div:contains('我')") 选取包含文本"我"的div元素.</dd>
+        <dt>:has(selector) 含有选择器所匹配元素的元素</dt>
+        <dd>如$("div:has('.color')") 选取含有.color类子元素的元素.</dd>
+        <dt>:parent 选取含有子元素(或者文本元素)的元素</dt>
+        <dd>如$("div:parent") 选取含有子元素或者文本元素的div元素.</dd>
+    </dl>
+    <dl>
+        <dt>可见性过滤选择器</dt>
+        <dd>根据元素可见和不可见的状态来选择相应元素.</dd>
+        <dt>:hidden 选取所有不可见元素</dt>
+        <dd>包括display:none visibility:hidden input type="hidden"</dd>
+        <dt>:visible 选取所有可见元素</dt>
+        <dd>如$("div:visible") 选取所有可见的div元素.</dd>
+    </dl>
+    <dl>
+        <dt>属性过滤器</dt>
+        <dd>根据元素的属性来筛选元素.</dd>
+        <dt>[attribute] 拥有attribute属性的元素</dt>
+        <dd>$("div[attr]") 拥有attr属性的div元素</dd>
+        <dt>[attr=value] 选取有属性attr且值为value的元素</dt>
+        <dd>如$("div[title=test]") 选取属性title的值为test的div元素</dd>
+        <dt>[attr!=value] 选取没有attr属性或者attr属性值不等于value的元素</dt>
+        <dd>如$("div[title!=test]") 选取没有title属性或者有title属性但值不等于test的div元素</dd>
+        <dt>[attr^=value] 选取属性值value开头的元素</dt>
+        <dd>如$("div[title^=test]") 选取title属性值value开头的div元素</dd>
+        <dt>[attr$=value] 选取属性值以value结尾的元素</dt>
+        <dd>如$("div[title$=test]") 选取title属性值以value结尾的div元素</dd>
+        <dt>[attr*=value] 选取属性值含有value的元素</dt>
+        <dd>如$("div[title*=test]") 选取title属性值中含有value的div元素</dd>
+        <dt>[attr|='value'] 选取属性值等于给定字符串value或者以value为前缀(即value-xxxx)的元素</dt>
+        <dd>如$("div[title|='en']") 选取属性title值等于en或者是en-开头的div元素</dd>
+        <dt>[attr~='value'] 选取属性值中有以空格分隔的value字符的元素</dt>
+        <dd>如$("div[class~='left']") 选取class属性中有left值的div元素.</dd>
+        <dt>[attr1][attr2][attrN] 复合筛选,选择满足多个条件的元素</dt>
+        <dd>如$("div[id][title$='test']") 选组含有ID属性,且title属性值以test结尾的div元素.</dd>
+        <dt>小小的总结一波</dt>
+        <dd>[] 拥有属性</dd>
+        <dd>[=] 属性值为</dd>
+        <dd>[!=] 属性值不为或没有此属性</dd>
+        <dd>[^=] 属性值以..开头</dd>
+        <dd>[$=] 属性值以..结尾</dd>
+        <dd>[*=] 属性值含有..</dd>
+        <dd>[|=''] 属性值为字符串..或者以字符串..-开头</dd>
+        <dd>[~=''] 属性值有以空格分隔出来的字符串..</dd>
+        <dd>多个条件可以联用,缩小范围.</dd>
+    </dl>
+    <dl>
+        <dt>子元素过滤器</dt>
+        <dd>:nth-child(index/even/odd/equation)</dd>
+        <dd>符合某种条件下的所有元素的集合,nth-child的数字是从1开始的,第一个孩子,第二个孩子等等...</dd>
+        <dd>odd 奇数,even 偶数.</dd>
+        <dd>与:eq(index)相比,:eq(index)只返回1个,nth-child(index)是所有此类父子搭配下符合index的.</dd>
+        <dt>:first-child 选出某个元素,它需是孩子中第一个</dt>
+        <dd>做一个比较的例子</dd>
+        <dd>如$('ul li:first-child') 返回所有ul元素中第一个li元素的集合.</dd>
+        <dd>而$('ul li:first') 则是返回整个页面中第一个ul下的第一个li元素.</dd>
+        <dt>:last-child 选出某个元素,它需是孩子中最后一个</dt>
+        <dd>类似上条,不赘述了.</dd>
+        <dt>:only-child 选出某个是它的父元素的唯一的子元素的元素</dt>
+        <dd>$('ul li:only-child') 选出某个li元素,它需是ul的唯一子元素.</dd>
+        <dt>:nth-child详细</dt>
+        <dd>1. :nth-child(even) 选取每个父元素下索引值是偶数的元素. 等价于:nth-child(2n)</dd>
+        <dd>2. :nth-child(odd) 选取每个父元素下索引值是奇数的元素. 等价于:nth-child(2n-1)</dd>
+        <dd>3. :nth-child(2) 选取每个父元素下索引值等于2的元素.</dd>
+        <dd>4. :nth-child(3n) 选取每个父元素下索引值是3的倍数的元素.(n从1开始)</dd>
+        <dd>5. :nth-child(3n+1) 选取每个父元素下索引值是(3n+1)的元素.</dd>
+    </dl>
+    <dl>
+        <dt>插一条 神奇的空格</dt>
+        <dd>$("div:first-chlid")和$(div :first-chlid)之间有何区别?</dd>
+        <dd>对,前者冒号前没有空格,而后者有.</dd>
+        <dd>这下意思可发生了大转变.</dd>
+        <dd>前者是选择一个div元素,它需是父元素中第一个孩子.</dd>
+        <dd>后者是选择所有div元素下第一个子元素.</dd>
+        <dd>可以理解为 这个空格与后面直接跟着的冒号之间,有一个被省略的*通配符.</dd>
+        <dd>所以$(div :first-chlid)就是$(div *:first-chlid),翻译为选择所有div下任意第一个子元素.</dd>
+        <dd>有没有空格会有很大的不同.</dd>
+    </dl>
+    <dl>
+        <dt>表单对象属性过滤器</dt>
+        <dt>:enabled 选取所有可用的元素</dt>
+        <dd>如$("#form1 :enabled") form1下所有可用的元素</dd>
+        <dt>:disabled 选取所有不可用的元素</dt>
+        <dd>如$("#form1 :disabled") form1下所有不可用的元素</dd>
+        <dt>:checked 选取所有被选中的元素(单选框,复选框)</dt>
+        <dd>如$("input:checked") 所有被选中了的input</dd>
+        <dt>:selected 选取所有被选中的选项元素(下拉列表)</dt>
+        <dd>$(select option:selected) 所有select下被选中的option</dd>
+    </dl>
+    <dl>
+        <dt>表单选择器</dt>
+        <dd>更灵活的操作表单,能更方便的选中某个或某类型的元素.</dd>
+        <dt>放着先不写</dt>
+    </dl>
+    <h1>JQ中的DOM操作</h1>
+    <dl>
+        <dt>查找节点</dt>
+        <dt>1.查找元素节点</dt>
+        <dd>见上文选择器.</dd>
+        <dt>2.查找属性节点 .attr()方法</dt>
+        <dd>$("p").attr("属性名","属性值(可选)")</dd>
+        <dd>[js]类似整合了setAttribute和getAttribute</dd>
+        <dt>创建节点</dt>
+        <dt>1.创建元素节点</dt>
+        <dd>使用JQuery中的函数工厂$()来完成. $(html)</dd>
+        <dd>如var $li_1 = $("&lt;li&gt;&lt;/li&gt;")</dd>
+        <dd>然后将这个$li_1插入到DOM树中就好.</dd>
+        <dd>[js]document.createElement("html")</dd>
+        <dt>2.创建文本节点</dt>
+        <dd>在创建元素节点时将文本写入元素,就自然创建节点了.</dd>
+        <dd>如var $li_1 = $("&lt;li&gt;这是文本节点,li是元素节点.&lt;/li&gt;")</dd>
+        <dd>[js]document.createTextNode(text)</dd>
+        <dt>3.创建属性节点</dt>
+        <dd>也是在创建元素节点时,一同被创建.</dd>
+        <dd>如var $li_2 = $("&lt;li class='left'&gt;"文本节点&lt;/li&gt;")</dd>
+        <dd>[js]setAttribute("attr","value")</dd>
+        <dl>
+            <dt>插入节点</dt>
+            <dd>1.append() 向每个匹配的元素<b>内部</b>追加内容</dd>
+            <dd>2.appendTo() append()的倒写,把追加内容写入匹配元素<b>内部</b>最后.</dd>
+            <dd>3.prepend() 向每个匹配的元素<b>内部</b>前置内容</dd>
+            <dd>4.prependTo() prepend()的倒写.</dd>
+            <dd>5.after() 在每个匹配元素之后追加内容</dd>
+            <dd>6.insertAfter() after()的倒写.</dd>
+            <dd>7.before() 在每个匹配的元素之前插入内容.</dd>
+            <dd>8.insertBefore() before的倒写.</dd>
+        </dl>
+        <dd>由于元素只有一个位置,所以插入节点不仅可以插入新节点,也可以移动原有节点的位置.</dd>
+        <dt>5.删除节点</dt>
+        <dt>1.remove()方法</dt>
+        <dd>$(ele).remove(selector);</dd>
+        <dd>删除ele元素中,满足selector的元素.</dd>
+        <dd>返回被删除元素的引用,因此可以再使用被删除的元素.</dd>
+        <dd>如var $li = $("ul li:fisrt").remove(); $li.appendTo("ul")</dd>
+        <dd>将ul中第一个li元素删除,然后添加回ul的最后.</dd>
+        <dd>等价于 $("ul li:first").appendTo("ul")</dd>
+        <dt>2.detach()方法</dt>
+        <dd>与remove()方法一样,返回被删除的元素.但保留此元素绑定的事件和附加的数据等.</dd>
+        <dt>3.empty()方法</dt>
+        <dd>清空元素里的内容,包括文本等后代节点. 会留下空的元素自身</dd>
+        
     </dl>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 </body>
