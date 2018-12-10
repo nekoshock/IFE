@@ -183,7 +183,18 @@
     <dl>
         <dt>表单选择器</dt>
         <dd>更灵活的操作表单,能更方便的选中某个或某类型的元素.</dd>
-        <dt>放着先不写</dt>
+        <dt>:input</dt>
+        <dd>$(":input") 选取所有input,textarea,select,button元素</dd>
+        <dt>:text 选取所有单行文本框</dt>
+        <dt>:password 选取所有密码行</dt>
+        <dt>:radio 选取所有单选框</dt>
+        <dt>:submit 选取所有提交按钮</dt>
+        <dt>:checkbox 选取所有多选框</dt>
+        <dt>:image 选取所有图像按钮</dt>
+        <dt>:reset 选取所有重置按钮</dt>
+        <dt>:button 选取所有按钮</dt>
+        <dt>:file 选取所有上传域</dt>
+        <dt>:hidden 选取所有不可见元素,即display:none,visibility:hidden,input type="hidden"</dt>
     </dl>
     <h1>JQ中的DOM操作</h1>
     <dl>
@@ -293,7 +304,7 @@
                 会返回&lt;b&gt;文本内容&lt;/b&gt;</dd>
             <dd>设置方法:html("设置内容"); 将设置内容作为参数传给html()</dd>
             <dt>2.text()方法</dt>
-            <dd>类似于JS的innerText属性. 但innerText有浏览器兼容问题,text()没有</dd>  
+            <dd>类似于JS的innerText属性. 但innerText有浏览器兼容问题,text()没有</dd>
             <dd>用法同上.</dd>
             <dt>3.val()方法</dt>
             <dd>类似于JS的value属性.</dd>
@@ -305,14 +316,39 @@
         </dl>
         <dl>
             <dt>遍历节点</dt>
-            <dt>1.childen()  获得子元素的集合</dt>
+            <dt>1.childen() 获得子元素的集合</dt>
             <dd>仅子元素,不考虑后代元素.</dd>
             <dt>2.next() 获得匹配元素后面紧邻的同辈元素.</dt>
             <dt>3.prev() 获得匹配元素前面紧邻的同辈元素.</dt>
-            
+            <dt>4.sibings() 兄弟姐妹,获取匹配元素前后所有同辈元素.</dt>
+            <dt>5.closest("选择器") 从当前元素开始,逐级向上查找直到找到匹配原则器的元素.</dt>
+            <dt>6.parent() parents() closest()的区别</dt>
+            <dd>parent() 从指定类型的直接父节点开始查找,返回一个节点.</dd>
+            <dd>parents("选择器") 查找方式同closest(),不断向上查找匹配的元素,最后返回多个父节点.</dd>
+            <dd>closest("选择器") 与parents()不同的是只返回第一个查找到的父节点.</dd>
         </dl>
-
-
+        <dl>
+            <dt>CSS-DOM操作</dt>
+            <dd>读取和设置style对象的各种属性.style属性虽然很有用,但不能提取外部CSS设置的样式信息,而JQ无论是外部导入样式还是内联都能操作.</dd>
+            <dt>直接设置 $("p").css("color","red");</dt>
+            <dt>同时设置 $("p").css({"color":"red","fontSize":"18px"})</dt>
+            <dd>如果值是数字,会自动转化为像素值.</dd>
+            <dt>height()方法</dt>
+            <dd>.css("height")方法用于获取元素在CSS中设置的高度,如10px,auto等.</dd>
+            <dd>.height()方法会获取元素在页面中的实际高度,且不带单位.</dd>
+            <dt>width()方法</dt>
+            <dd>同height()方法,两者用的较少.</dd>
+            <dt>几个常用的方法</dt>
+            <dt>offset()方法 获取元素在当前视窗的相对偏移量.</dt>
+            <dd>返回的对象包含两个属性,left和top,即左偏移和上偏移.</dd>
+            <dd>例 var a1 = $("p").offset(); <br>
+                var left = a1.left; // 获取左偏移 <br>
+                var top = a1.top; // 获取右偏移</dd>
+            <dt>postion()方法 获取一个relative或absolute对父节点的相对偏移.</dt>
+            <dd>如同offset()方法一样,它返回的对象也有left和top属性.</dd>
+            <dt>scrollTop()方法和scrollLeft()方法 获取和设置元素的滚动条距离顶端和左端的距离</dt>
+            <dd>还可以给这两个方法指定一个参数,控制元素内的滚动条滚动到指定位置,如textarea内的滚动条.</dd>
+        </dl>
     </dl>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 </body>
