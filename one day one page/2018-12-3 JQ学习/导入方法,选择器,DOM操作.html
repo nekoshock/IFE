@@ -330,7 +330,9 @@
             <dt>6.parent() parents() closest()的区别</dt>
             <dd>parent() 从指定类型的直接父节点开始查找,返回一个节点.</dd>
             <dd>parents("选择器") 查找方式同closest(),不断向上查找匹配的元素,最后返回多个父节点.</dd>
-            <dd>closest("选择器") 与parents()不同的是只返回第一个查找到的父节点.</dd>
+            <dd>closest("选择器") 从自身匹配逐级向上,与parents()不同的是只返回第一个查找到的父节点.</dd>
+            <dd>7.find() 从后代元素中筛选出指定元素节点.</dd>
+            <dd>8.parentsUntil([选择器]) 同parents,直到搜索到参数匹配元素为至,返回祖先元素但不返回匹配项.</dd>
         </dl>
         <dl>
             <dt>CSS-DOM操作</dt>
