@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQuery学习</title>
+    <link href="https://cdn.bootcss.com/chosen/1.8.8.rc6/chosen.css" rel="stylesheet">
+</head>
+
+<body>
+    <H1>Jquery 事件 插件</H1>
+    <p>事件是昨天学的,今天学插件.</p>
+    <p>今天的目标是学完事件,再做三个实例.</p>
+    <h2>插件</h2>
+    <dl>
+        <dt>如何寻找自己需要的插件?</dt>
+        <dd>1.官方插件库 plugins.jquery.com 现在已经不维护了.</dd>
+        <dd>2.npm www.npmjs.com 搜索jquery 官方推荐.</dd>
+        <dt>如何使用?</dt>
+        <dd>找插件文档,实现demo,精读文档,动手实验.</dd>
+    </dl>
+    <dl>
+        <h2>常用插件</h2>
+        <dt>chosen</dt>
+        <dd><a href="https://github.com/harvesthq/chosen">https://github.com/harvesthq/chosen</a></dd>
+        <dd>可以上bootcdn上找到分流.</dd>
+        <dd>选择项,为单选和多选框添加样式和方便的功能.</dd>
+        <br>
+        <dd>
+            <select name="demo1" id="demo1" style="width:300px;">
+                <option value="1">选项1</option>
+                <option value="2">选项2</option>
+            </select>
+        </dd>
+        <br>
+        <dd>
+            <select name="demo2" id="demo2" multiple="multiple" aria-placeholder="请选择...">
+                <option value="1">选项1</option>
+                <option value="2">选项2</option>
+            </select>
+        </dd>
+        <br>
+        <dd>tips:激活只能一次,激活时要分别传width需要分开激活.</dd>
+        <dd>激活:$(ele).chosen();</dd>
+        <dd>设置宽度:激活时传参数$(ele).chosen({width:"..."});</dd>
+        <dd>关闭chosen效果:$(ele).chosen("destroy");</dd>
+        <dd>选项"被选中"状态改变时触发change事件:$(ele).chosen().change(...)</dd>
+        <dd>动态更新所选内容: $(ele).trigger("chosen:updated")</dd>
+    </dl>
+
+    <script src="../tool/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/chosen/1.8.8.rc6/chosen.jquery.min.js"></script>
+    <script>
+        $(() => {
+            $("#demo1").chosen();
+            $("#demo2").chosen({
+                width: "150px",
+            });
+        });
+    </script>
+</body>
+
+</html>
