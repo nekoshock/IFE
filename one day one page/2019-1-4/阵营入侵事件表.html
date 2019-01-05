@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>阵营入侵时间表</title>
+    <style>
+        body {
+            text-align: center;
+            width: 1000px;
+            margin: 100px auto;
+        }
+
+        table {
+            width: 100%;
+            text-align: center;
+        }
+
+        td {
+            width: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="4">阵营入侵时间表</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="date"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th colspan="4">NEXT</th>
+            </tr>
+            <TR>
+                <td id="date1"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </TR>
+            <TR>
+                <td id="date2"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </TR>
+            <TR>
+                <td id="date3"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </TR>
+            <TR>
+                <td id="date4"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </TR>
+        </tbody>
+    </table>
+    <script src="../../tool/jquery-3.3.1.min.js"></script>
+    <script>
+        $(() => {
+            const now = new Date();
+            const base = new Date(2018, 11, 19, 6, 0, 0, 0);
+            const rate = Math.floor((((now - base) / (60 * 60 * 1000)) + 7) / 19);
+            const event = new Date((rate * 19 * 1000 * 60 * 60) + base.valueOf());
+            const end = new Date(event.valueOf() + (7 * 1000 * 60 * 60));
+            const event1 = new Date(((rate + 1) * 19 * 1000 * 60 * 60) + base.valueOf());
+            const end1 = new Date(event1.valueOf() + (7 * 1000 * 60 * 60));
+            const event2 = new Date(((rate + 2) * 19 * 1000 * 60 * 60) + base.valueOf());
+            const end2 = new Date(event2.valueOf() + (7 * 1000 * 60 * 60));
+            const event3 = new Date(((rate + 3) * 19 * 1000 * 60 * 60) + base.valueOf());
+            const end3 = new Date(event3.valueOf() + (7 * 1000 * 60 * 60));
+            const event4 = new Date(((rate + 4) * 19 * 1000 * 60 * 60) + base.valueOf());
+            const end4 = new Date(event4.valueOf() + (7 * 1000 * 60 * 60));
+            const areaArr = ["祖达萨",
+                "提拉加德海峡",
+                "纳兹米尔",
+                "斯托颂谷地",
+                "沃顿",
+                "德鲁斯瓦",
+            ];
+            $("#date").html(`${event.getMonth() + 1}月${event.getDate()}日`)
+                .next()
+                .html(`${event.getHours()}:00`)
+                .next()
+                .html(`${end.getHours()}:00`)
+                .next()
+                .html(`${areaArr[rate % 6]}`);
+            $("#date1").html(`${event1.getMonth() + 1}月${event1.getDate()}日`)
+                .next()
+                .html(`${event1.getHours()}:00`)
+                .next()
+                .html(`${end1.getHours()}:00`)
+                .next()
+                .html(`${areaArr[(rate + 1) % 6]}`);
+            $("#date2").html(`${event2.getMonth() + 1}月${event2.getDate()}日`)
+                .next()
+                .html(`${event2.getHours()}:00`)
+                .next()
+                .html(`${end2.getHours()}:00`)
+                .next()
+                .html(`${areaArr[(rate + 2) % 6]}`);
+            $("#date3").html(`${event3.getMonth() + 1}月${event3.getDate()}日`)
+                .next()
+                .html(`${event3.getHours()}:00`)
+                .next()
+                .html(`${end3.getHours()}:00`)
+                .next()
+                .html(`${areaArr[(rate + 3) % 6]}`);
+            $("#date4").html(`${event4.getMonth() + 1}月${event4.getDate()}日`)
+                .next()
+                .html(`${event4.getHours()}:00`)
+                .next()
+                .html(`${end4.getHours()}:00`)
+                .next()
+                .html(`${areaArr[(rate + 4) % 6]}`);
+        });
+    </script>
+</body>
+
+</html>
