@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JQuery学习</title>
     <link href="https://cdn.bootcss.com/chosen/1.8.8.rc6/chosen.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/pickadate.js/3.5.6/compressed/themes/default.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/pickadate.js/3.5.6/compressed/themes/classic.date.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/pickadate.js/3.5.6/compressed/themes/classic.time.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,17 +52,29 @@
         <dd>选项"被选中"状态改变时触发change事件:$(ele).chosen().change(...)</dd>
         <dd>动态更新所选内容: $(ele).trigger("chosen:updated")</dd>
         <dt>pickadate</dt>
-        <dd></dd>
+        <dd>时间选择框</dd>
+        <dd><a href="http://amsul.ca/pickadate.js/">http://amsul.ca/pickadate.js/</a></dd>
+        <dd><input type="text" name="date" id="" class="pickadate"></dd>
+        <dd><input type="text" name="time" id="" class="pickatime"></dd>
+        <dt>Magnific-Popup</dt>
+        <dd>图片展示器</dd>
+        <dd>http://dimsemenov.com/plugins/magnific-popup/</dd>
     </dl>
 
-    <script src="../tool/jquery-3.3.1.min.js"></script>
+    <script src="../../tool/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.bootcss.com/chosen/1.8.8.rc6/chosen.jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/pickadate.js/3.5.6/compressed/picker.js"></script>
+    <script src="https://cdn.bootcss.com/pickadate.js/3.5.6/compressed/picker.date.js"></script>
+    <script src="https://cdn.bootcss.com/pickadate.js/3.5.6/compressed/picker.time.js"></script>
+    <script src="https://cdn.bootcss.com/pickadate.js/3.5.6/compressed/translations/zh_CN.js"></script>
     <script>
         $(() => {
             $("#demo1").chosen();
             $("#demo2").chosen({
                 width: "150px",
             });
+            $(".pickadate").pickadate();
+            $(".pickatime").pickatime();
         });
     </script>
 </body>
