@@ -11,11 +11,12 @@
     border: 10px solid #bbb;
 }
 
+/* 默认不现实 */
 .banner .banner-slide {
     display: none;
-
 }
 
+/* 显示时充满 */
 .banner .slide-active {
     display: block;
     height: 460px;
@@ -41,46 +42,54 @@
     background: url(../IMG/5.jpg);
 }
 
+/* 给小球找个地方 */
 .carousel .dot-layer {
-    width: 200px;
+    width: 120px;
     height: 20px;
     position: absolute;
-    right: 10px;
+    right: 15px;
     bottom: 15px;
     background-color: rgba(0, 0, 0, 0);
 }
 
+/* 小球样式 */
 .carousel .dot-layer .dot {
-    background: rgba(0, 0, 0, 0.5);
-    border: 2px solid #eee;
-    border-radius: 15px;
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 5px;
     width: 10px;
     height: 10px;
     cursor: pointer;
+    border-radius: 15px;
 }
 
+/* 白色小球 */
+.carousel .dot-layer .dot-white {
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #fff;
 
+}
+
+/* 棕色小球 */
+.carousel .dot-layer .dot-brown {
+    background: #aaa;
+    border: 2px solid #fff;
+}
+
+/* 被选中的小球样式 */
 .carousel .dot-layer .dot-active {
     background: #fff;
+    border: 2px solid #aaa;
 }
 
+
+/* 箭头位置 */
 .carousel .arrow {
-    width: 60px;
-    height: 100px;
+    width: 50px;
+    height: 85px;
     position: absolute;
     top: 180px;
     background: rgba(255, 255, 255, 0);
-    text-align: center;
-    vertical-align: middle;
 }
-
-.carousel .arrow:hover {
-    background: rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-}
-
 
 .carousel .prev {
     left: 0px;
@@ -90,6 +99,13 @@
     right: 0px;
 }
 
+/* 箭头hover */
+.carousel .arrow:hover {
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+/* 图片箭头 */
 .carousel .arrow img {
     display: block;
     position: absolute;
@@ -98,5 +114,5 @@
     left: 0;
     right: 0;
     margin: auto;
-    width: 20px;
+    width: 15px;
 }
