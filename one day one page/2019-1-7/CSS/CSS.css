@@ -1,0 +1,102 @@
+.warppaper {
+    background-color: papayawhip;
+}
+
+.carousel {
+    margin: 150px auto;
+    width: 1200px;
+    height: 460px;
+    background: red;
+    position: relative;
+    border: 10px solid #bbb;
+}
+
+.banner .banner-slide {
+    display: none;
+
+}
+
+.banner .slide-active {
+    display: block;
+    height: 460px;
+}
+
+.banner .slide1 {
+    background: url(../IMG/1.jpg);
+}
+
+.banner .slide2 {
+    background: url(../IMG/2.jpg);
+}
+
+.banner .slide3 {
+    background: url(../IMG/3.jpg);
+}
+
+.banner .slide4 {
+    background: url(../IMG/4.jpg);
+}
+
+.banner .slide5 {
+    background: url(../IMG/5.jpg);
+}
+
+.carousel .dot-layer {
+    width: 200px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.carousel .dot-layer .dot {
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #eee;
+    border-radius: 15px;
+    display: inline-block;
+    margin-left: 10px;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+
+.carousel .dot-layer .dot-active {
+    background: #fff;
+}
+
+.carousel .arrow {
+    width: 60px;
+    height: 100px;
+    position: absolute;
+    top: 180px;
+    background: rgba(255, 255, 255, 0);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.carousel .arrow:hover {
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+
+.carousel .prev {
+    left: 0px;
+}
+
+.carousel .next {
+    right: 0px;
+}
+
+.carousel .arrow img {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 20px;
+}
