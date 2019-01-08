@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹出层制作-JQuery</title>
+    <style>
+        .content {
+            height: 500px;
+            cursor: pointer;
+        }
+
+        /* 弹出层遮罩 */
+        .layer-mask {
+            display: none;
+            Z-index: 999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.5;
+        }
+
+        /* 弹出层框体 */
+        .layer-pop {
+            display: none;
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            width: 400px;
+            height: 300px;
+            background: white;
+        }
+
+        /* 弹出层关闭按钮 */
+        .layer-close {
+            float: right;
+            width: 24px;
+            height: 24px;
+            border: 3px solid #fff;
+            text-align: center;
+            line-height: 24px;
+            border-radius: 50%;
+            background: #fff;
+            margin-top: -12px;
+            margin-right: -12px;
+        }
+
+        .layer-close:hover {
+            cursor: pointer;
+            background: #ccc;
+            color: #fff;
+        }
+
+        .login {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            background: chartreuse;
+        }
+
+        .login {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            background: chartreuse;
+        }
+
+        .signUp {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            background: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 正文(暂时不写) -->
+    <div class="content">
+        <div class="login button">登录</div>
+        <div class="signUp button">注册</div>
+        <!-- 弹出层 -->
+        <!-- 遮罩 -->
+        <div id="layer-mask" class="layer-mask"></div>
+        <!-- 弹出框体 -->
+        <div id="layer-pop" class="layer-pop">
+            <!-- 关闭按钮 -->
+            <div class="layer-close" id="layer-close">×</div>
+            <!-- 正文 -->
+            <div class="layer-content" id="layer-content"></div>
+        </div>
+    </div>
+    <div id="content1" style="display:none;">这是登录</div>
+    <div id="content2" style="display:none;">这是注册</div>
+    <!-- 封装 -->
+
+
+    <script src="../../tool/jquery-3.3.1.min.js"></script>
+    <script>
+        $(() => {
+            // 基础
+            // $(".content").click(() => {
+            //     $("#layer-mask").show();
+            //     $("#layer-pop").show();
+            //     $("#layer-close").click(() => {
+            //         $("#layer-mask").hide();
+            //         $("#layer-pop").hide();
+            //         return false;
+            //     });
+            // });
+
+
+            // 封装
+            function hideLayer() {
+                $("#layer-mask").hide();
+                $("#layer-pop").hide();
+            }
+
+            function showLayer(html) {
+                $("#layer-mask").show();
+                $("#layer-pop").show();
+                $("#layer-content").html(html);
+                $("#layer-close").click(() => {
+                    hideLayer();
+                    return false;
+                });
+            }
+
+            $(".login").click(() => {
+                const loginHtml = $("#content1").html();
+                showLayer(loginHtml);
+            });
+        });
+    </script>
+</body>
+
+</html>
