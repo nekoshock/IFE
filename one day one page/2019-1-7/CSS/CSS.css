@@ -7,12 +7,12 @@
     border: 10px solid #bbb;
 }
 
-/* 默认不现实 */
+/* 默认不显示 */
 .banner .banner-slide {
     display: none;
 }
 
-/* 显示时充满 */
+/* 显示 */
 .banner .slide-active {
     display: block;
     height: 460px;
@@ -38,7 +38,7 @@
     background: url(../IMG/5.jpg);
 }
 
-/* 给小球找个地方 */
+/* 小球位置 */
 .carousel .dot-layer {
     position: absolute;
     right: 15px;
