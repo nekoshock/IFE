@@ -18,6 +18,9 @@
 **插入**
 `列表名.insert(插入位置,"添加项")`
 
+**删除项**
+`del 列表名[index]`
+
 **删除最后一个**
 `列表名.pop()`
 返回被删除项
@@ -49,6 +52,7 @@
 ### 元祖
 `(1,2,3,4,5,6)`
 > 只有两个方法 'count', 'index
+> **元祖的元素不可修改,元祖的元素的元素是可以被修改的**
 > 元祖能做的事情列表都能做,反过来就不行.
 > 元祖的意义是明确的告诉别人,这个东西不要改.
 
@@ -111,3 +115,80 @@ for line in obj:
 `obj.write("内容")`
 **关闭**
 `obj.close()`
+*****************
+### 接收执行参数
+```
+import sys
+print (sys.argv)
+```
+程序导入sys,使用sys下的argvs属性.argv内有程序调用文件自身和调用时的参数.
+***********
+### 字典
+> 就是键值对
+
+比如
+```
+dic = {key1:value1,
+        key2:value2}
+```
+
+**新增**
+`d["key"] = value`
+
+**删除**
+`del d["key"]`
+
+**键,值,键值对**
+```
+keys()
+values()
+items()
+```
+for循环时用的到.
+**************
+一切都是对象(object),对象是有类(class)创建的
+`type()`可以找到对象是基于什么类创建的.
+*********
+### lnt内部功能
+>基本没啥卵用
+
+`.__abs__()` 返回绝对值 (两下划线)
+另有内置方法 abs(num) 方法(两者是调用关系)
+
+`.__divmod__()` 返回包含商和余数的元祖
+
+`.__float__()` 将数字转换为float型并返回新的数
+
+`.__floordiv__()` 地板除,等价于// (与abs情况类似)
+
+```
+.__gt__() greater than
+.__lt__() less than
+.__ge__() greater equel
+.__le__() less equel
+返回布尔值
+```
+*************
+`type()` 获得类
+`dir()` 获得类里有什么成员
+*********
+### 字符串内部功能
+dir(str)获得:
+```
+['__add__', '__class__', '__contains__', '__delattr__', 
+'__dir__', '__doc__', '__eq__', '__format__', '__ge__', 
+'__getattribute__', '__getitem__', '__getnewargs__', '__gt__', 
+'__hash__', '__init__', '__init_subclass__', '__iter__', 
+'__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__',
+'__new__', '__reduce__', '__reduce_ex__', '__repr__', 
+'__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__',
+'__subclasshook__', 'capitalize', 'casefold', 'center', 
+'count', 'encode', 'endswith', 'expandtabs', 'find', 'format',
+'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 
+'isdecimal', 'isdigit', 'isidentifier', 'islower', 
+'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 
+'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition',
+'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 
+'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 
+'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+```
