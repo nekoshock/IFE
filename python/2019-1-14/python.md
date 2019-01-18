@@ -115,7 +115,8 @@ else:
     name = "balabala   ".strip()
     name//"balabala" 
     ```
-2. ` split()`*分割*
+2. ` split("分割器","最大分割次数(默认不限)")` *分割* 
+指定字符分割字符串
 3. `len(str)` *长度*
 4. `str[1]` *索引*
 5. `str[1:] str[1:10] `*切片*

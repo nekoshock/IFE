@@ -192,3 +192,72 @@ dir(str)获得:
 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 
 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
 ```
+********
+`str.__contains__()` 是否包含,相当于in
+
+`str.__getattribute__()` 反射里会用的到.
+
+`str.capitalize()` 首字母大写,其他小写
+
+`str.casefold()` 均转换为小写
+
+`str.center("宽度","填充物")` 居中
+
+`ljust()`左对齐
+`rjust()`右对齐
+
+
+`str.count(子序列,起始位置,结束位置)` 计算子序列出现次数 
+
+`str.encode()` 编码
+
+`str.ewdswith(子序列,起始位置,结束位置)` ends with,判断字符串是否是以子序列结尾.
+
+`str.expendtabs()` 把tab转换为空格(默认是8个空格).
+>tab /t
+
+`str.find(子序列,起始位置,结束位置)`  找到子序列的位置
+与index类似,但如果find没找到返回-1,index找不到会报错.
+******
+`str.format()` 字符串格式化(%r %d %s)的方法版本.
+
+    name = "alex {0} as {1}"
+    result name.format("sb","eric")
+
+还有一种方法
+
+    name = "alex {name} as {id}"
+    result name.format(name="sb",id="eric")
+
+都是可以拼接的.
+*******
+```
+'isalnum', 'isalpha', 'isascii', 
+'isdecimal', 'isdigit', 'isidentifier', 'islower', 
+'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper'
+```
+判断是不是
+****
+`str.join(分割符)`  将列表用分隔符拼接为字符串
+
+```
+str1 = 'abcde'
+str2 = '12345'
+trans_law = str.maketrans(str1,str2)
+str3 = 'abcdefg'
+str3.translate(trans_law)
+str3 #12345fg
+```
+其中str.maketrans是str命名空间下的方法,str若另外声明并改成数字便会报错. 也可以用任意字符串代替str,maketrans()是字符串的内置函数.
+
+`str.partition(分割符)` 将字符串分割为:分割符之前,分割符,分割符之后3部分.
+必须给1个分割符,匹配到第一个分割符便分割,只分割这一次.
+
+`str.replace("被替换","替换","个数(默认全部)")` 替换若干子序列.
+
+`str.startwith()` 是否以...开头
+
+`str.swapcase()` 全部字符大小写转换
+
+********************
+### 
