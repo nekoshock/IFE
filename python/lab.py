@@ -1,4 +1,8 @@
-str1 = 'abcbdbcbbbbbbbbbbe'
-str1.partition("c")
-str1
-str1.split("b", 1)
+dict1 = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+}
+
+dict1.pop("onew","what")
+dict1.popitem()
