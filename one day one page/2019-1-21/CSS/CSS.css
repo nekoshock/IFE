@@ -5,7 +5,7 @@
  }
 
  .wallpaper {
-     background-color: #f3f5f7;
+    background-color: #f3f5f7;
      min-width: 900px;
  }
 
@@ -113,7 +113,7 @@
  }
 
  .logo>.right>.shopping-cart {
-     width: 100%;
+     width: 90%;
      height: 40px;
      position: absolute;
      top: 0;
@@ -125,9 +125,15 @@
      line-height: 40px;
      color: white;
      text-align: center;
+     font-size: 0.9rem;
  }
+
  .logo>.right>.shopping-cart>* {
-     display:inline-block;
-     margin:auto 5px;
+     display: inline-block;
+     margin: auto 3px;
      vertical-align: middle;
+ }
+
+ .logo>.right>.shopping-cart>*:last-child {
+     margin-left: 10px;
  }
