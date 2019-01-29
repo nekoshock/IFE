@@ -34,6 +34,10 @@
      color: #000;
      line-height: 50px;
      margin-right: 15px;
+     cursor: pointer;
+ }
+ .top>.login-bar div:hover {
+     color:red;
  }
 
  .top>.user-menu {
