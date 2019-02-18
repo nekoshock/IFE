@@ -37,8 +37,8 @@
     <h3>多媒体标签</h3>
     <p>
         <ul>
-            <li>video 标记定义一个视频</li>
-            <li>audio 标记定义一个音频</li>
+            <li>video 标记定义一个视频,默认支持mp3,ogg,wav</li>
+            <li>audio 标记定义一个音频,默认支持ogg,MP4,webM</li>
             <li>source 标记定义媒体资源</li>
             <li>canvas 标记定义画布</li>
             <li>embed 标记定义外部标签的可交互的内容插件,比如flash</li>
@@ -49,7 +49,7 @@
         <ul>
             <li>src="引用地址"</li>
             <li>autoplay="autoplay" 自动播放,默认不播放.</li>
-            <li>loop="-1" 重复次数,当loop为-1时无限次重复</li>
+            <li>loop="loop" 是否重复.邪道用法:当loop为-1时无限次重复</li>
             <li>controls="controls" 是否使用自带控制器.默认不使用</li>
             <li>audio标签内的文字是当audio标签不被识别时显示的.</li>
             <li>还有一些API先按下不表.</li>
@@ -64,7 +64,7 @@
         <h4>source标签用法</h4>
         <p>
             &lt;audio 控制属性balabala,但不写src&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;source src="引用地址" type="audio(音频)/mpeg(mp3转码器)"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;source src="引用地址" type="audio(音频)/mp3(转码器)"&gt;<br>
             &lt;/audio&gt;<br>
         </p>
         <p>
@@ -77,6 +77,114 @@
             <li>src="引用地址"</li>
             <li>width height 控制大小.</li>
         </ul>
+    </p>
+    <h3>状态标签</h3>
+    <ul>
+        <li>meter 实时状态显示.如气温,气压等.</li>
+        <li>progress 任务过程.如安装,加载等.</li>
+    </ul>
+    <h4>meter标签属性</h4>
+    <meter value="100" hight="150" low="50" max="200" min="0" optimum="100"></meter>
+    <ul>
+        <li>value 当前值</li>
+        <li>high 当值高于哪个点,就是高</li>
+        <li>low 当值低于哪个点,就是低</li>
+        <li>max 定义最大值,默认是1</li>
+        <li>min 定义最小值,默认是0</li>
+        <li>optimum<i>(最适宜的)</i> 界定什么样的度量值是最佳的值,<br>
+            如果该值大于high属性,则意味越高越好;<br>
+            如果该值小于low属性,则意味越低越好.
+        </li>
+    </ul>
+    <h4>progress标签属性</h4>
+    <progress max="100" value="70"></progress>
+    <progress max="100"></progress>
+    <ul>
+        <li>max 定义完成的值</li>
+        <li>value 定义当前的值,如果只给max不给value会有一个小动画代替.</li>
+        <li>用法: <br>
+            &lt;progress&gt; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;span id="objprogress"&gt;85&lt;/span&gt;%<br>
+            &lt;/progress&gt;
+        </li>
+    </ul>
+    <h3>web应用标签 列表标签</h3>
+    <p>
+        <ul>
+            <li>datalist 为input标签定义一个下拉列表,配合option使用</li>
+            <li>details 标记定义一个元素的详细内容,配合summary<i>摘要</i>使用</li>
+        </ul>
+    </p>
+    <h4>datalist标签属性</h4>
+    <div>
+        <p>datalist演示</p>
+        <input list="data" placeholder="number">
+        <datalist id="data">
+            <option value="one">one</option>
+            <option value="two">two</option>
+            <option value="three">three</option>
+            <option value="four">four</option>
+            <option value="five">five</option>
+        </datalist>
+    </div>
+    <div>
+        <p>select演示</p>
+        <select name="" id="">
+            <option value="one">one</option>
+            <option value="two">two</option>
+            <option value="three">three</option>
+            <option value="four">four</option>
+            <option value="five">five</option>
+        </select>
+    </div>
+    <p>datalist优点:</p>
+    <ul>
+        <li>需要搭配input list="datalist的ID"来绑定使用</li>
+        <li>比起select可以起到搜索,有placeholder,甚至可以直接接收用户填入的内容而不是预设的选项.</li>
+        <li>需要IE10+版本</li>
+    </ul>
+    <h4>details标签属性</h4>
+    <details>
+        <summary>details实例, 点击我</summary>
+        <p>details可以隐藏一部分文章,只留一个小箭头和summary.当点击它时,能把隐藏的内容显示出来.<br>
+            如果不设置summary做标题,默认显示为"详细信息".
+        </p>
+    </details>
+    <ul>
+        <li>open="open" 展开details,默认是不展开.</li>
+        <li>ie好像不支持.</li>
+    </ul>
+    <h3>标注标签</h3>
+    <h4>ruby 注释标签</h4>
+    <ul>
+        <li>ruby 标签定义注释或音标</li>
+        <li>rt 标记定义对ruby的注释内容文本</li>
+        <li>rp 告诉那些不支持ruby元素的浏览器如何显示,rp放在rt之外.</li>
+    </ul>
+    <p>犄角<ruby>旮旯<rp>(</rp>
+            <rt>ga la</rt>
+            <rp>)</rp>
+        </ruby>
+    </p>
+    <h4>mark标签</h4>
+    <p>这是一段<mark>mark标签</mark>的测试文字</p>
+    <ul>
+        <li>mark标签会让包含内容变成黄色选中状态.</li>
+    </ul>
+    <h4>output标签</h4>
+    <p>标记定义一些输出类型,计算表单结果配合oninput事件.</p>
+    <ul>
+        <li>oninput事件可以实时监听文本框的输入变化.</li>
+        <li>for="id" 定义输出域相关的一个或多个元素</li>
+        <li>name="名称" 定义对象的唯一名称(表单提交时用)</li>
+    </ul>
+    <p>
+        示例:
+        <form oninput="totalPrice.value = parseInt(price.value)*parseInt(number.value)">
+            <input type="text" id="price" value="5000">*
+            <input type="number" id="number" value="2">=
+            <output name="totalPrice" for="price number"></output>
+        </form>
     </p>
 </body>
 
