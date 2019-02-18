@@ -28,7 +28,56 @@
             <li>dialog 标签定义一个对话框</li>
         </ul>
     </p>
-
+    <p>
+        注意点: <br>
+        1. header/section/aside/article/footer不要嵌套<br>
+        2. header/section/footer > aside/article/figure/hgroup/nav > div/figcaption
+    </p>
+    <hr>
+    <h3>多媒体标签</h3>
+    <p>
+        <ul>
+            <li>video 标记定义一个视频</li>
+            <li>audio 标记定义一个音频</li>
+            <li>source 标记定义媒体资源</li>
+            <li>canvas 标记定义画布</li>
+            <li>embed 标记定义外部标签的可交互的内容插件,比如flash</li>
+        </ul>
+    </p>
+    <p>
+        <h4>audio标签属性</h4>
+        <ul>
+            <li>src="引用地址"</li>
+            <li>autoplay="autoplay" 自动播放,默认不播放.</li>
+            <li>loop="-1" 重复次数,当loop为-1时无限次重复</li>
+            <li>controls="controls" 是否使用自带控制器.默认不使用</li>
+            <li>audio标签内的文字是当audio标签不被识别时显示的.</li>
+            <li>还有一些API先按下不表.</li>
+        </ul>
+        <H4>video标签</H4>
+        <ul>
+            <li>src="引用地址"</li>
+            <li>autoplay="autoplay" 自动播放,默认不播放.</li>
+            <li>controls="controls" 是否使用自带播放器.</li>
+            <li>width height 控制视频大小.</li>
+        </ul>
+        <h4>source标签用法</h4>
+        <p>
+            &lt;audio 控制属性balabala,但不写src&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;source src="引用地址" type="audio(音频)/mpeg(mp3转码器)"&gt;<br>
+            &lt;/audio&gt;<br>
+        </p>
+        <p>
+            &lt;video 控制属性balabala,但不写src&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;source src="引用地址" type="video(视频)/mp4(转码器)"&gt;<br>
+            &lt;/video&gt;<br>
+        </p>
+        <h4>embed标签属性</h4>
+        <ul>
+            <li>src="引用地址"</li>
+            <li>width height 控制大小.</li>
+        </ul>
+    </p>
 </body>
 
 </html>
