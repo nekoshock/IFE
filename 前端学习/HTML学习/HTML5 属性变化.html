@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML5属性变化</title>
+</head>
+
+<body>
+    <h1>HTML5属性变化</h1>
+    <p>2019-2-27 15:34:03</p>
+    <h3>input email</h3>
+    <p>input type="email"</p>
+    <p><input type="email" name="email" id=""></p>
+    <p>终于知道为什么要这么写,虽然在PC端与text的差距表现不出来,但移动端的输入法认识这个,看到type="email"时会启动专用的键盘,键盘上会有@和.com的快捷键.</p>
+    <h3>input url</h3>
+    <p>又叫统一资源定位符</p>
+    <p>input type="url"</p>
+    <p><input type="url" name="url" id=""></p>
+    <p>与email一样,外观无变化,仍然是给移动端的键盘看的.键盘上会有.com之类的按键.</p>
+    <h3>input tel</h3>
+    <p>电话号码 input type="tel"</p>
+    <p><input type="tel" name="tel" id=""></p>
+    <p>与之前的都一样,移动端键盘会给出电话的数字输入法,会有*#之类的按键.</p>
+    <h3>input type="number"</h3>
+    <p><input type="number" name="number" id=""></p>
+    <p>数字类型,框上有上下两个成对箭头,框中只认数字和数字符号(如常数e)</p>
+    <h3>input的date pickers</h3>
+    <h4>获取年月日 input type="date"</h4>
+    <p><input type="date" name="date" id=""></p>
+    <p>会唤醒一个日历的样式,来获取一个日期.</p>
+    <h4>获取年月 input type="month"</h4>
+    <p><input type="month" name="month" id=""></p>
+    <p>type="date"的阉割版,只剩年月可以选.</p>
+    <h4>获取时间 input type="time"</h4>
+    <p><input type="time" name="time" id=""></p>
+    <p>唤醒一个菜单,选小时和分钟.</p>
+    <h4>同时获取日期和时间 input type="datetime"</h4>
+    <p><input type="datetime" name="datetime" id=""></p>
+    <p>已经不兼容了.</p>
+    <h4>同时获取日期和时间 input type="datetime-local"</h4>
+    <p><input type="datetime-local" name="datetime-local" id=""></p>
+    <p>datetime的是UTC时间格式(世界标准时间),而datetime-local是本地时间.所以更多人用的是datetime-local.</p>
+</body>
+
+</html>
