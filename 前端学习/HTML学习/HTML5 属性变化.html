@@ -73,6 +73,30 @@
     <h3>placeholder属性</h3>
     <p><input type="text" placeholder="placeholder"></p>
     <p>placeholder很好用.</p>
+    <h3>input requirde</h3>
+    <p>requirde="requirde" 表单提交时不得为空,email还得满足一个初级验证</p>
+    <p>十分简单的验证,所以到底还是得用JS自己写一个.</p>
+    <h2>链接属性</h2>
+    <h3>link的sizes属性</h3>
+    <p>link引入icon(图标文件),type="image/gif"时,sizes给出icon的大小.就是浏览器地址栏上的那个小图标,比如百度的熊爪这样.</p>
+    <p>这样可以根据不同的设备的分辨率给出不同的sizes</p>
+    <p>link rel="icon" href="icon.gif" type="image/gif" sizes="16*16"</p>
+    <h3>base标签的target属性</h3>
+    <p>base写在head标签里,base只有一个,base决定了页面中所有相对位置从什么地方开始.</p>
+    <p>换言之,原来的相对位置是以当前页面的位置为base,修改base就能把整个页面的绝对路径转化为相对路径.</p>
+    <p>base href="http://localhost/" targer="_blank"</p>
+    <p>那么base中的targer属性就是更改了所有的链接的默认打开方式(原本默认_self).</p>
+    <h3>超链接a的属性media</h3>
+    <p>标明链接需要对什么设备类型进行优化.</p>
+    <p>media="handheld" 对手持设备进行优化.</p>
+    <p>media="tv" 对电视设备进行优化.</p>
+    <h3>超链接a的属性hreflang</h3>
+    <p>设置语言,提前告诉浏览器用什么语言,加快渲染时间.</p>
+    <h3>超链接a的属性rel</h3>
+    <p>语义化的表达链接和本文档的关系,比如nofollow:告诉搜索引擎不要追踪此链接,external:告诉搜索引擎这不是本站链接.</p>
+    <h2>script的新属性</h2>
+    <h3>defer="defer" 加载完脚本后并不执行,而是等整个页面加载完之后再执行.</h3>
+    <h3>async="async" 加载完脚本后立即执行,不用等整个页面都加载完,属于异步执行.</h3>
 </body>
 
 </html>
