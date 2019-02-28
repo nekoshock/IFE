@@ -11,6 +11,7 @@
 <body>
     <h1>HTML5属性变化</h1>
     <p>2019-2-27 15:34:03</p>
+    <h2>input</h2>
     <h3>input email</h3>
     <p>input type="email"</p>
     <p><input type="email" name="email" id=""></p>
@@ -52,6 +53,26 @@
     <h3>input type="color"</h3>
     <p><input type="color" name="color" id=""></p>
     <p>弹出一个颜色选择控件,选取一个颜色.可以用来做在线文本编辑器之类的.</p>
+    <h2>表单属性</h2>
+    <h3>autocomplete属性</h3>
+    <p>form域或input域应该拥有自动完成功能,就是在提交过一次后,浏览器保存提交过得信息,下次点击输入框会给出提示能直接填写.</p>
+    <form action="#">
+        <input type="text" name="autocomplete" id="">
+        <input type="submit">
+    </form>
+    <p>form autocomplete="on" 关闭"off" 默认是on</p>
+    <h3>autofoucs属性</h3>
+    <p><input type="text" autofocus="autofocus"></p>
+    <p>autofocus="autofocus" 页面加载完成后,光标在哪.适用于所有input.</p>
+    <h3>multiple属性</h3>
+    <p><input type="email" name="multipleemail" id="" multiple="multiple"></p>
+    <p><input type="file" name="multiplefile" id="" multiple="multiple"></p>
+    <p>multiple="multiple" 规定输入域中可选择多个值.适用于email和file.</p>
+    <p>在email中可以通过一个逗号,来分割多个email地址.传给后端时能自动分为数组.</p>
+    <p>PS:应该是在input中适用于email和file,但在select也是能用上的,成为下拉多选菜单.</p>
+    <h3>placeholder属性</h3>
+    <p><input type="text" placeholder="placeholder"></p>
+    <p>placeholder很好用.</p>
 </body>
 
 </html>
