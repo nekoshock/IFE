@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>video和audio的属性和事件</title>
+</head>
+
+<body>
+    <h1>VIDEO标签</h1>
+    <p>MP4格式比较安全.</p>
+    <h2>VIDEO标签属性</h2>
+    <dl>
+        <dt>src</dt>
+        <dd>文件来源</dd>
+        <dt>controls</dt>
+        <dd>controls="controls"或者简写controls 使用浏览器自带的控制器.</dd>
+        <dt>width height</dt>
+        <dd>还是交给CSS吧</dd>
+        <dt>autoplay</dt>
+        <dd>打开页面后自动播放,但在chrome下不会自动播放.</dd>
+        <dt>loop</dt>
+        <dd>循环播放,写法也是简写loop或者loop="loop"</dd>
+        <dt>poster</dt>
+        <dd>封面图片,在不播放时显示的图片.只在没有播放时显示,播放后不再出现.</dd>
+        <dt>muted</dt>
+        <dd>静音属性,写法同loop.</dd>
+        <dt>source标签</dt>
+        <dd>写在video内部,有属性src是video标签里src的替代品.可以多写几个source标签作为备选,从上至下直到能播放.</dd>
+    </dl>
+    <h2>VIDEO标签的API事件</h2>
+    <dl>
+        <dt>play() 在不播放时播放</dt>
+        <dd>video(元素).play(); <br>
+            chrome下不能自动带声音的播放,也就是说必须加载完用事件去触发播放才行.</dd>
+        <dt>pause() 暂停播放</dt>
+        <dd>暂停而已.</dd>
+        <dt>duration() 返回当前视频/音频的总长度</dt>
+        <dd>比如进度条的总时间就是用duration做的,返回以秒计. <br>
+            如下例:
+            min = parseInt(videoNode.duration/60);<br>
+            sec = parseInt(videoNode.duration%60); <br>
+            不过,需视频加载完才能读取时间,否则会返回NaN.</dd>
+        <dt>currentTime 返回或设置当前播放位置,这是个属性</dt>
+        <dd>值以秒记. <br>
+            设置的话,如videoNode.currentTime = 30; 就是跳转至0分30秒. <br>
+            快进: videoNode.currentTime += 5;</dd>
+        <dt>src 设置或返回当前视频来源,这是个属性</dt>
+        <dd>如:videoNode.src = '路径/video.mp4'</dd>
+        <dt>volume 设置或返回音量,这是个属性</dt>
+        <dd>大小是从0(静音)到1(最大声)</dd>
+        <dt>controls 设置视频是否显示控件,这是个属性</dt>
+        <dd>设置: videoNode.controls = true; <br>
+            去除 videoNode.controls = fales; <br>
+            实际上这个API就是控制元素html属性栏里controls属性的有无.</dd>
+    </dl>
+</body>
+
+</html>
