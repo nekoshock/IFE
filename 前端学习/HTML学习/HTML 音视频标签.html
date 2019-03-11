@@ -55,6 +55,70 @@
         <dd>设置: videoNode.controls = true; <br>
             去除 videoNode.controls = fales; <br>
             实际上这个API就是控制元素html属性栏里controls属性的有无.</dd>
+        <dt>muted 设置静音,这是个属性</dt>
+        <dd>例: videoNote.muted = true; <br>
+            设置方式如同controls,但不会在html里多出一个属性.</dd>
+        <dt>networkState 返回视频的当前状态,这是一个属性</dt>
+        <dd>返回状态码: <br>
+            1:已找到资源,但未使用网络 <br>
+            2:已找到资源,一边下载一边看.
+            3:未找到资源(因为打开时不会立刻找到视频,所以此时networkState也会返回3) <br>
+            0:未初始化</dd>
+        <dt>currentSrc 返回当前音视频的url,这是一个属性</dt>
+        <dd>必须是加载完成后能播放才能正确返回url,且无法赋值改变url.</dd>
+        <dt>ended 返回当前视频是否播放结束,这是一个属性</dt>
+        <dd>当进度条走完结束时,才会返回true,其他是false <br>
+            可以用作事件监听: videoNote.addEventListener("ended",function(){ <br>
+            console.log("播放结束"); <br>
+            })</dd>
+        <dt>loop 设置或返回视频播放结束时是否重复播放,这是一个属性</dt>
+        <dd>videoNote.loop = true; <br>
+            设置方式和原理如同controls,html里也会多出一个属性.</dd>
+        <dt>playbackRate 设置或返回播放速度</dt>
+        <dd>设置1倍速,2倍速,3倍速等等,默认速度1倍速. <br>
+            例:
+            默认速度: videoNote.playbackRate = 1;<br>
+            二倍速: videoNote.playbackRate = 2;</dd>
+        <dt>readyState 属性返回视频的当前就绪状态</dt>
+        <dd>返回状态码: <br>
+            0:没有关于视频就绪信息. (比如页面打开的一瞬间,没有加载时会返回0) <br>
+            1:有数据,但快不足以支撑播放了. <br>
+            2:当前的数据是可用的,但没有数据来播放下一帧了. <br>
+            3:数据正在缓冲,当前及至少下一帧是可用的了. <br>
+            4:数据足以开始播放,可以播放. <br></dd>
+        <dt>timeupdate 当目前的播放位置已更改时,触发事件</dt>
+        <dd>即监听是否正在播放.
+            例: <br>
+            videoNote.addEventListener("timeupdate",function() {<br>
+            console.log("视频播放了");<br>
+            })
+        </dd>
+        <dt>seeked 当播放进度"已"移动或跳跃到新位置时,触发事件.</dt>
+        <dt>seeking 当播放进度"开始"移动或跳跃到新位置时,触发事件.</dt>
+        <dd>seeking的触发数会比seeked高很多.</dd>
+        <dt>volumechange 当音量已更改时,触发事件.</dt>
+        <dd><br></dd>
+        <dt>requestFullscreen 全屏</dt>
+        <dd>挺麻烦的,仅chrome和firefox完全支持,其他的需要moz或者webkit或者ms的前缀. <br>
+            注意mozRequestFullScreen的Screen的S是大写. <br>
+            实际使用需如同下例:<br>
+            function launchFullScreen(element) { <br>
+            &nbsp;&nbsp;if(element.requestFullscreen) { <br>
+            &nbsp;&nbsp;element.requestFullscreen(); <br>
+            &nbsp;&nbsp;} else if(element.mozRequestFullScreen) { <br>
+            &nbsp;&nbsp;element.mozRequestFullScreen(); <br>
+            &nbsp;&nbsp;} else if(element.webkitRequestFullscreen) { <br>
+            &nbsp;&nbsp;element.webkitRequestFullscreen(); <br>
+            &nbsp;&nbsp;} else if(element.msRequestFullscreen) { <br>
+            &nbsp;&nbsp;element.msRequestFullscreen(); }<br>
+            }
+        </dd>
+        <dt>exitFullscreen 退出全屏</dt>
+        <dd>写法同上,不过一般来说退出全屏都会用播放器控件.</dd>
+        <dt>load() 重新加载视频资源,或者说刷新一下video元素.</dt>
+        <dd>当改变视频来源后,最好load一下.</dd>
+        <dt>canplay 视频准备好播放时,触发事件.</dt>
+        <dd>当视频从打开页面加载下载直到可以播放时,触发事件.</dd>
     </dl>
 </body>
 
