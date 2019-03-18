@@ -4,6 +4,12 @@
   list-style: none;
 }
 
+/* css怎么让页面上的内容不能被选中？
+禁止浏览器默认选中事件会出现的各种bug,比如拖拽什么的
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none; */
 .outerNode {
   width: 900px;
   height: 600px;
