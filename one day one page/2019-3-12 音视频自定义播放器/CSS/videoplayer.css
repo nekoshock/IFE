@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.outerNode {
+  width: 900px;
+  height: 600px;
+  margin: 0px auto;
+  margin-top: 100px;
+  box-shadow: 0 0 4px black;
+  background-color: black;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.videoNode {
+  display: block;
+  padding-top: 50px;
+  height: 500px;
+  width: 100%;
+}
+
+.controlsNode {
+  padding-top: 18px;
+  width: 100%;
+  height: 32px;
+  position: relative;
+}
+
+.playNode {
+  margin-left: 30px;
+  width: 20px;
+  height: 24px;
+  background-image: url("../images/playNode.png");
+  background-size: cover;
+  float: left;
+  transition: 0.1s;
+}
+
+.playing {
+  background-image: url("../images/pause.png");
+  opacity: 0.8;
+}
+
+.loadNode {
+  position: absolute;
+  top: 0px;
+  width: 96%;
+  height: 18px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.loadNode:hover,
+.playNode:hover,
+.volumeMuted:hover,
+.fullscreen:hover,
+.volumeWarp:hover {
+  cursor: pointer;
+}
+
+.loadWarp {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 0px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #666666;
+}
+
+.crlNode {
+  position: absolute;
+  left: 0%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  margin-left: -6px;
+  height: 12px;
+  width: 12px;
+  background-image: url("../images/crl_bg.png");
+  background-size: cover;
+  z-index: 2;
+}
+
+.currentTimeLine {
+  width: 0%;
+  height: 2px;
+  background-color: #447cf5;
+}
+
+.timeWarp {
+  height: 24px;
+  /* todo */
+  float: left;
+  width: 150px;
+  margin-left: 15px;
+}
+
+.timeNow,
+.timeDivider,
+.timeTotal {
+  float: left;
+  color: #ccc;
+  line-height: 24px;
+  font-size: 0.8rem;
+}
+
+.timeDivider {
+  margin: 0px 5px;
+}
+
+.fullscreen {
+  width: 20px;
+  height: 24px;
+  float: right;
+  margin-right: 30px;
+  background-image: url("../images/full_bg.png");
+  background-size: cover;
+  transition: 0.1s;
+}
+
+
+.volume {
+  float: right;
+  height: 24px;
+  width: 200px;
+  margin-right: 15px;
+}
+
+.volumeMuted {
+  background-image: url("../images/volume_bg.png");
+  height: 24px;
+  width: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: left;
+}
+
+.volumeWarp {
+  margin-left: 5px;
+  height: 24px;
+  width: 150px;
+  float: left;
+  position: relative;
+}
+
+.volumeSlider {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #666666;
+}
+
+.volumeSliderLine {
+  width: 50%;
+  height: 2px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #447cf5;
+}
+
+.volumeSliderCrl {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin: auto;
+  margin-left: -6px;
+  background-image: url("../images/crl_bg.png");
+  background-size: cover;
+  z-index: 2;
+}
