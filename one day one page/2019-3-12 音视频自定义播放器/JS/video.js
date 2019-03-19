@@ -3,16 +3,29 @@ var playNode = document.querySelector(".playNode");
 var videoNode = document.querySelector(".videoNode");
 var fullscreen = document.querySelector(".fullscreen");
 var loadNode = document.querySelector(".loadNode");
-var loadNodeWidth = loadNode.offsetWidth;
 var timeNow = document.querySelector(".timeNow");
 var timeTotal = document.querySelector(".timeTotal");
-var timeTotalNum;
 var crlNode = document.querySelector(".crlNode");
 var currentTimeLine = document.querySelector(".currentTimeLine");
 var loadWarp = document.querySelector(".loadWarp");
 var controlsNode = document.querySelector(".controlsNode");
-var body = document.querySelector("body");
-var VideoplayerMousedownState = 0;
+var html = document.querySelector("html");
+var volumeMuted = document.querySelector(".volumeMuted");
+// 封装一些参数到集合里,省的变量名不够用
+var videoPlayer = {
+    MousedownState: 0,
+    timeTotalNum: 0,
+};
+var soundVolume = {
+    MousedownState: 0,
+    // 预设音量,今后可以改为读取本地的.
+    rate: 1,
+    mutedBefore: 1,
+};
+var volumeWarp = document.querySelector(".volumeWarp");
+var volumeSlider = document.querySelector(".volumeSlider");
+var volumeSliderLine = document.querySelector(".volumeSliderLine");
+var volumeSliderCrl = document.querySelector(".volumeSliderCrl");
 
 function timeNumFix(num) {
     // if (num < 10) {
@@ -57,55 +70,58 @@ fullscreen.onclick = function() {
 // 总时间,当加载完成时显示
 videoNode.addEventListener("canplay", function() {
     timeTotal.innerHTML = timeNumFix(parseInt(videoNode.duration / 60)) + ":" + timeNumFix(parseInt(videoNode.duration % 60));
-    timeTotalNum = videoNode.duration;
+    videoPlayer.timeTotalNum = videoNode.duration;
+    moveVolumeBar(soundVolume.rate);
 })
 // 播放时,修改当前时间,进度条移动
 // 为了能停止自动更新进度条,我将这条拆出来写.
 function timeupDate() {
     // 修改当前时间,移动进度条
     const now = videoNode.currentTime;
-    moveProgressBar(now / timeTotalNum);
+    moveProgressBar(now / videoPlayer.timeTotalNum);
 }
 videoNode.addEventListener("timeupdate", timeupDate);
 
 // 点击与拖动进度条
 loadNode.addEventListener("mousedown", function(e) {
     videoNode.removeEventListener("timeupdate", timeupDate);
-    VideoplayerMousedownState = 1;
+    videoPlayer.MousedownState = 1;
     // 移动进度条
-    moveProgressBar(mousePosition(e));
+    moveProgressBar(mousePosition(e, loadNode));
     // 挂上移动鼠标时进度条随动
-    body.addEventListener("mousemove", followMouse);
+    html.addEventListener("mousemove", videoFollowMouse);
     // 拆写,用于移除事件
-    function followMouse(e) {
-        if (VideoplayerMousedownState !== 0) {
-            moveProgressBar(mousePosition(e));
+    function videoFollowMouse(e) {
+        if (videoPlayer.MousedownState !== 0) {
+            moveProgressBar(mousePosition(e, loadNode));
         }
     }
     // 松开鼠标时改变播放时间
-    body.addEventListener("mouseup", function(e) {
-        if (VideoplayerMousedownState !== 0) {
-            body.removeEventListener("mousemove", followMouse);
-            videoNode.currentTime = (mousePosition(e)) * timeTotalNum;
+    html.addEventListener("mouseup", function(e) {
+        if (videoPlayer.MousedownState !== 0) {
+            html.removeEventListener("mousemove", videoFollowMouse);
+            videoNode.currentTime = (mousePosition(e, loadNode)) * videoPlayer.timeTotalNum;
             videoPlay();
             videoNode.addEventListener("timeupdate", timeupDate);
-            VideoplayerMousedownState = 0;
+            videoPlayer.MousedownState = 0;
         }
     });
 });
 
 
 // 获取鼠标与进度条相对位置
-function mousePosition(e) {
+function mousePosition(e, ele) {
     const ev = e || event;
     const l = ev.pageX;
-    let evTarget = loadNode;
+    console.log(ev.pageX);
+    let evTarget = ele;
     let evLeft = evTarget.offsetLeft;
     while (evTarget.offsetParent !== null) {
         evLeft += evTarget.offsetParent.offsetLeft;
         evTarget = evTarget.offsetParent;
     }
-    var rate = (l - evLeft) / loadNodeWidth;
+    console.log(evLeft);
+    var rate = (l - evLeft) / ele.offsetWidth;
     // if (rate < 0) {
     //     rate = 0;
     // }
@@ -118,14 +134,58 @@ function mousePosition(e) {
     return rate;
 }
 
-
+// 移动进度条
 function moveProgressBar(rate) {
-    // 移动进度条
     currentTimeLine.style.width = (rate * 100) + "%";
     crlNode.style.left = (rate * 100) + "%";
     // 修改当前时间
-    timeNow.innerHTML = timeNumFix(parseInt((rate * timeTotalNum) / 60)) + ":" + timeNumFix(parseInt((rate * timeTotalNum) % 60));
+    timeNow.innerHTML = timeNumFix(parseInt((rate * videoPlayer.timeTotalNum) / 60)) + ":" + timeNumFix(parseInt((rate * videoPlayer.timeTotalNum) % 60));
 }
 
 // offsetleft是距离文档或者已定位的父元素的左侧距离;
 // offsetWidht是实际宽度;
+
+// 音量条就好写很多,现成的系统直接套用就好.
+// 音量条相关API: volume volumechange
+volumeWarp.addEventListener("mousedown", function(e) {
+    moveVolumeBar(mousePosition(e, volumeWarp));
+    soundVolume.MousedownState = 1;
+    html.addEventListener("mousemove", volumeFollowMouse);
+    // 拆写,用于移除事件
+    function volumeFollowMouse(e) {
+        if (soundVolume.MousedownState !== 0) {
+            moveVolumeBar(mousePosition(e, volumeSlider));
+        }
+    }
+    html.addEventListener("mouseup", function(e) {
+        if (soundVolume.MousedownState !== 0) {
+            html.removeEventListener("mousemove", volumeFollowMouse);
+            soundVolume.MousedownState = 0;
+        }
+    });
+});
+// 移动音量条
+function moveVolumeBar(rate) {
+    volumeSliderLine.style.width = (rate * 100) + "%";
+    volumeSliderCrl.style.left = (rate * 100) + "%";
+    videoNode.volume = rate;
+    soundVolume.rate = rate;
+}
+// 静音图标
+volumeMuted.addEventListener("click", function(e) {
+    volumeMuted.classList.toggle("muted");
+    if (volumeMuted.classList.contains("muted")) {
+        soundVolume.mutedBefore = soundVolume.rate;
+        moveVolumeBar(0);
+    } else {
+        moveVolumeBar(soundVolume.mutedBefore);
+    }
+});
+// 如果音量变为0,则图标class加入muted
+videoNode.addEventListener("volumechange", function(e) {
+    if (videoNode.volume === 0) {
+        volumeMuted.classList.add("muted");
+    } else {
+        volumeMuted.classList.remove("muted");
+    }
+});
