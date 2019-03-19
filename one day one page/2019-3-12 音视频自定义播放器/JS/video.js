@@ -110,14 +110,12 @@ loadNode.addEventListener("mousedown", function(e) {
 function mousePosition(e, ele) {
     const ev = e || event;
     const l = ev.pageX;
-    console.log(ev.pageX);
     let evTarget = ele;
     let evLeft = evTarget.offsetLeft;
     while (evTarget.offsetParent !== null) {
         evLeft += evTarget.offsetParent.offsetLeft;
         evTarget = evTarget.offsetParent;
     }
-    console.log(evLeft);
     var rate = (l - evLeft) / ele.offsetWidth;
     // if (rate < 0) {
     //     rate = 0;
@@ -186,3 +184,10 @@ videoNode.addEventListener("volumechange", function(e) {
         volumeMuted.classList.remove("muted");
     }
 });
+videoNode.addEventListener("click", function() {
+    if (playNode.classList.contains("playing")) {
+        videoPause();
+    } else {
+        videoPlay();
+    }
+})

@@ -23,9 +23,13 @@ user-select: none; */
   user-select: none;
 }
 
+.topBlank {
+  height: 50px;
+  width: 100%;
+}
+
 .videoNode {
   display: block;
-  padding-top: 50px;
   height: 500px;
   width: 100%;
 }
@@ -62,6 +66,7 @@ user-select: none; */
   margin: auto;
 }
 
+.videoNode:hover,
 .loadNode:hover,
 .playNode:hover,
 .volumeMuted:hover,
