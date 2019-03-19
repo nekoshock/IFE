@@ -57,7 +57,7 @@
             实际上这个API就是控制元素html属性栏里controls属性的有无.</dd>
         <dt>muted 设置静音,这是个属性</dt>
         <dd>例: videoNote.muted = true; <br>
-            设置方式如同controls,但不会在html里多出一个属性.</dd>
+            设置方式如同controls,但不会在html里多出一个属性.只在加在videoNode元素里.</dd>
         <dt>networkState 返回视频的当前状态,这是一个属性</dt>
         <dd>返回状态码: <br>
             1:已找到资源,但未使用网络 <br>
@@ -119,6 +119,83 @@
         <dd>当改变视频来源后,最好load一下.</dd>
         <dt>canplay 视频准备好播放时,触发事件.</dt>
         <dd>当视频从打开页面加载下载直到可以播放时,触发事件.</dd>
+    </dl>
+    <H1>AUDIO标签</H1>
+    <H2>audio标签属性</H2>
+    <p>支持的格式有MP3,WAV,OGG.与视频一样也有兼容问题,用MP3最安全,wav也安全,ogg的话safari不认识.</p>
+    <dl>
+        <dt>source标签</dt>
+        <dd>内有src属性和type属性,用法与video标签里的source一模一样.</dd>
+        <dt>controls</dt>
+        <dd>启用浏览器自带的音频控件.能用CSS改宽,但不高度不能改,多出部分HTML会留空</dd>
+        <dt>JS可以生成一个audio对象,不用写在HTML里,毕竟音频不需要HTML给出空间.</dt>
+        <dd>例: <br>
+            var audioNode = new Audio(); <br>
+            audioNode.src = "xx.mp3"; <br>
+            audioNode.loop = true; //设置循环播放属性 <br>
+            audioNode.play(); <br>
+        </dd>
+        <dt>src</dt>
+        <dd>音频的资源地址</dd>
+        <dt>autoplay 自动播放</dt>
+        <dd>如同video的autoplay一样,chrome和欧朋浏览器上不能直接播放.</dd>
+        <dt>loop 循环播放</dt>
+        <dd>&nbsp;</dd>
+        <dt>muted 静音</dt>
+        <dd>&nbsp;</dd>
+    </dl>
+    <h2>Audio标签的API事件</h2>
+    <p>与video标签的API事件基本一模一样,用法也一模一样.</p>
+    <dl>
+        <dt>play() 播放</dt>
+        <dd>例:audioNode.play();</dd>
+        <dt>pause() 暂停</dt>
+        <dd>例:audioNode.pause();</dd>
+        <dt>duration 返回音频总时间,这是一个属性</dt>
+        <dd>var audioTotalTime = audioNode.duration;</dd>
+        <dt>currentTime 返回或设置当前播放时间</dt>
+        <dd>var now = audioNode.duration;</dd>
+        <dt>src</dt>
+        <dd>audioNode.src = "xx.mp3";</dd>
+        <dt>volume 返回或设置播放音量</dt>
+        <dd>上下限是0到1之间.</dd>
+        <dt>controls</dt>
+        <dd>略;</dd>
+        <dt>muted</dt>
+        <dd>audioNode.muted = true; 静音</dd>
+        <dt>netwrokState</dt>
+        <dd>与video的相同,略.</dd>
+        <dt>currentSrc 加载完成后才能返回的SRC地址,只读</dt>
+        <dd>没啥用,与video相同</dd>
+        <dt>ended 播完时才会触发的事件</dt>
+        <dd>用于事件监听,audioNode.addEventListener("ended",function(){ <br>
+            console.log("播放结束"); <br>
+            });</dd>
+        <dt>loop 是否循环播放</dt>
+        <dd>audioNode.loop = true;</dd>
+        <dt>playbackRate 播放速度</dt>
+        <dd>与video的相同,1是默认速度; <br>
+            例: audioNode.playbackRate = 2; //二倍速;
+        </dd>
+        <dt>readyState 返回音频的当前就绪状态</dt>
+        <dd>与video的相同,根据网络和已加载部分长短返回状态码.</dd>
+        <dt>timeupdate 当播放时间改变时触发事件</dt>
+        <dd>与video的相同 <br>
+            例:audioNode.addEventListener("timeupdate",function(){ <br>
+            console.log("播放进度已改变"); <br>
+            }</dd>
+        <dt>seeked 当播放进度"已"移动或跳跃到新位置时,触发事件.</dt>
+        <dt>seeking 当播放进度"开始"移动或跳跃到新位置时,触发事件.</dt>
+        <dd>seeking的触发数会比seeked高很多.</dd>
+        <dt>volumechange 当音量已更改时,触发事件.</dt>
+        <dd>&nbsp;</dd>
+        <dt>requestFullscreen 全屏</dt>
+        <dd>如同video一样必须用兼容式写法,webkit,moz,ms. <br>
+            必须在HTML中有audio标签才能全屏,如果是JS直接创建的audio对象就无法全屏.</dd>
+        <dt>load</dt>
+        <dd>重新加载音频资源.</dd>
+        <dt>canplay</dt>
+        <dd>与video一样,页面从打开到加载完音频需要时间,加载完成时就会触发canplay事件.</dd>
     </dl>
 </body>
 

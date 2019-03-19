@@ -166,7 +166,7 @@ function moveVolumeBar(rate) {
     videoNode.volume = rate;
     soundVolume.rate = rate;
 }
-// 静音图标
+// 静音图标,用muted写还有点不太好用呢. muted并不会引发volumechange
 volumeMuted.addEventListener("click", function(e) {
     volumeMuted.classList.toggle("muted");
     if (volumeMuted.classList.contains("muted")) {
