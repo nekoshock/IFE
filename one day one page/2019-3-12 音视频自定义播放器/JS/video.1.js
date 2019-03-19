@@ -85,27 +85,24 @@ videoNode.addEventListener("timeupdate", timeupDate);
 // 点击与拖动进度条
 loadNode.addEventListener("mousedown", function(e) {
     videoNode.removeEventListener("timeupdate", timeupDate);
-    videoPlayer.MousedownState = 1;
     // 移动进度条
     moveProgressBar(mousePosition(e, loadNode));
     // 挂上移动鼠标时进度条随动
     document.addEventListener("mousemove", videoFollowMouse);
     // 拆写,用于移除事件
     function videoFollowMouse(e) {
-        if (videoPlayer.MousedownState !== 0) {
-            moveProgressBar(mousePosition(e, loadNode));
-        }
+        moveProgressBar(mousePosition(e, loadNode));
+    }
+
+    function endVideoPlayProgressChange(e) {
+        document.removeEventListener("mousemove", videoFollowMouse);
+        document.removeEventListener("mouseup", endVideoPlayProgressChange);
+        videoNode.currentTime = (mousePosition(e, loadNode)) * videoPlayer.timeTotalNum;
+        videoPlay();
+        videoNode.addEventListener("timeupdate", timeupDate);
     }
     // 松开鼠标时改变播放时间
-    document.addEventListener("mouseup", function(e) {
-        if (videoPlayer.MousedownState !== 0) {
-            html.removeEventListener("mousemove", videoFollowMouse);
-            videoNode.currentTime = (mousePosition(e, loadNode)) * videoPlayer.timeTotalNum;
-            videoPlay();
-            videoNode.addEventListener("timeupdate", timeupDate);
-            videoPlayer.MousedownState = 0;
-        }
-    });
+    document.addEventListener("mouseup", endVideoPlayProgressChange);
 });
 
 
@@ -149,22 +146,20 @@ function moveProgressBar(rate) {
 // 音量条相关API: volume volumechange
 volumeWarp.addEventListener("mousedown", function(e) {
     moveVolumeBar(mousePosition(e, volumeWarp));
-    soundVolume.MousedownState = 1;
     document.addEventListener("mousemove", volumeFollowMouse);
     // 拆写,用于移除事件
     function volumeFollowMouse(e) {
-        if (soundVolume.MousedownState !== 0) {
-            moveVolumeBar(mousePosition(e, volumeSlider));
-        }
+        moveVolumeBar(mousePosition(e, volumeSlider));
+    }
+
+    function endVolumeChange() {
+        document.removeEventListener("mousemove", volumeFollowMouse);
+        document.removeEventListener("mouseup", endVolumeChange);
     }
     // 讲道理,我感觉下面这个也可以移除
     // 如果它能够移除自己,就可以不用这么多个鼠标按下标记,也不会再document里留下事件残留.
-    document.addEventListener("mouseup", function(e) {
-        if (soundVolume.MousedownState !== 0) {
-            document.removeEventListener("mousemove", volumeFollowMouse);
-            soundVolume.MousedownState = 0;
-        }
-    });
+    // 确实是可以自己停止自己,就很方便.
+    document.addEventListener("mouseup", endVolumeChange);
 });
 // 移动音量条
 function moveVolumeBar(rate) {
