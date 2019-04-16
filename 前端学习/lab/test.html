@@ -11,8 +11,23 @@
 <body>
 
     <script>
-        var str = "ASD";
-        console.log(str.charCodeAt());
+        var reverse1 = function(x) {
+            var a = x + "";
+            if (x < 0) {
+                a = a.split("").slice(1).reverse();
+                a.unshift("-");
+                a = a.join("");
+            } else {
+                a = a.split("").reverse().join("");
+            }
+
+            if (-2147483648 < parseFloat(a, 10) && parseFloat(a, 10) < 2147483647) {
+                console.log("a=" + a);
+                return parseInt(a, 10);
+            }
+            return 0;
+        };
+        console.log(reverse1(214711483648));
     </script>
 </body>
 
